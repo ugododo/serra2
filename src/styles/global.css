@@ -1,0 +1,578 @@
+/* 
+ * Global Styles for Serra 2.0 Project
+ * Place this file in: src/styles/global.css
+ * Import in pages with: import '../styles/global.css';
+ */
+
+/* ==================== CSS Reset and Base Styles ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #f9f9f9;
+    padding-top: 80px; /* Account for fixed navigation */
+  }
+  
+  /* ==================== Navigation Bar ==================== */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+    padding: 1rem 2rem;
+  }
+  
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .nav-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #667eea;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  .nav-logo:hover {
+    opacity: 0.8;
+  }
+  
+  .nav-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .nav-btn {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    background: transparent;
+    color: #333;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .nav-btn:hover {
+    color: #667eea;
+  }
+  
+  .nav-btn.primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 25px;
+  }
+  
+  .nav-btn.primary:hover {
+    opacity: 0.9;
+    color: white;
+  }
+  
+  /* Mobile menu toggle button */
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+  }
+  
+  /* Mobile responsive navigation */
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: block;
+    }
+  
+    .nav-buttons {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
+      background: white;
+      flex-direction: column;
+      padding: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transform: translateY(-100%);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      pointer-events: none;
+    }
+  
+    .nav-buttons.active {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+  
+    .nav-btn {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  
+  /* ==================== Page Headers ==================== */
+  .page-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 4rem 2rem 3rem;
+    text-align: center;
+  }
+  
+  .page-header h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: 1rem;
+  }
+  
+  .page-header p {
+    font-size: 1.2rem;
+    opacity: 0.95;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  /* ==================== Hero Section (Landing Page) ==================== */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    color: white;
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Hero background image */
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../../public/Serra2024.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    z-index: 0;
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .hero-content h1 {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  }
+  
+  .hero-content p {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    opacity: 0.95;
+  }
+  
+  /* ==================== Containers and Sections ==================== */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+  
+  .section-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #2c3e50;
+  }
+  
+  /* ==================== About Section ==================== */
+  .about {
+    background: white;
+    padding: 4rem 2rem;
+  }
+  
+  .about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+  }
+  
+  /* ==================== Artists Grid ==================== */
+  .artists-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .artist-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .artist-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+  }
+  
+  .artist-image {
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+  }
+  
+  .artist-info {
+    padding: 1.5rem;
+  }
+  
+  .artist-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+  }
+  
+  .artist-specialty {
+    color: #7f8c8d;
+    font-style: italic;
+  }
+  
+  /* ==================== Artworks Section ==================== */
+  .artworks {
+    background: #f0f0f0;
+  }
+  
+  .artworks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-top: 2rem;
+  }
+  
+  .artwork-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .artwork-card:hover {
+    transform: scale(1.02);
+  }
+  
+  .artwork-image {
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+  }
+  
+  .artwork-details {
+    padding: 1.5rem;
+  }
+  
+  .artwork-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+  }
+  
+  .artwork-artist {
+    color: #667eea;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  
+  .artwork-description {
+    color: #666;
+    line-height: 1.6;
+  }
+  
+  /* ==================== Expositions Specific Styles ==================== */
+  .expo-section {
+    margin-bottom: 4rem;
+  }
+  
+  .expo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+  
+  .expo-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .expo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+  }
+  
+  .status-badge {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    width: fit-content;
+  }
+  
+  .status-badge.upcoming {
+    background: #e3f2fd;
+    color: #1976d2;
+  }
+  
+  .status-badge.ongoing {
+    background: #e8f5e9;
+    color: #388e3c;
+  }
+  
+  .status-badge.past {
+    background: #f3e5f5;
+    color: #7b1fa2;
+  }
+  
+  .expo-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+  
+  .expo-detail {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.8rem;
+    color: #555;
+  }
+  
+  .expo-detail-icon {
+    margin-right: 0.8rem;
+    font-size: 1.2rem;
+    min-width: 24px;
+  }
+  
+  .expo-detail-text {
+    flex: 1;
+  }
+  
+  .expo-dates {
+    font-weight: 600;
+    color: #667eea;
+  }
+  
+  .expo-button {
+    margin-top: auto;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    text-align: center;
+    font-weight: 600;
+    transition: opacity 0.3s ease;
+    display: inline-block;
+  }
+  
+  .expo-button:hover {
+    opacity: 0.9;
+  }
+  
+  /* ==================== Partners Specific Styles ==================== */
+  .partner-section {
+    margin-bottom: 4rem;
+  }
+  
+  .partners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+  
+  .partner-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .partner-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+  }
+  
+  .partner-logo {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  
+  .partner-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  
+  .partner-logo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 8px;
+  }
+  
+  .partner-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+  
+  .partner-link {
+    margin-top: auto;
+    padding: 0.6rem 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: opacity 0.3s ease;
+    display: inline-block;
+  }
+  
+  .partner-link:hover {
+    opacity: 0.9;
+  }
+  
+  /* ==================== Thank You Section ==================== */
+  .thank-you {
+    background: white;
+    border-radius: 12px;
+    padding: 3rem 2rem;
+    text-align: center;
+    margin-top: 3rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  
+  .thank-you h2 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+  
+  .thank-you p {
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  /* ==================== Empty State ==================== */
+  .empty-message {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: #7f8c8d;
+    font-size: 1.1rem;
+  }
+  
+  /* ==================== Footer ==================== */
+  footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  /* ==================== Responsive Adjustments ==================== */
+  @media (max-width: 768px) {
+    body {
+      padding-top: 70px;
+    }
+  
+    .hero {
+      min-height: 80vh;
+    }
+    
+    .container {
+      padding: 3rem 1.5rem;
+    }
+  
+    .page-header {
+      padding: 3rem 1.5rem 2rem;
+    }
+  
+    .expo-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .partners-grid {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+  }
