@@ -1,0 +1,377 @@
+---
+// Expositions Page
+// Displays all upcoming and past exhibitions/representations of the Serra 2.0 project
+// Place this file in: src/pages/expositions.astro
+
+// Import the reusable Navigation component
+import Navigation from '../components/navbar.astro';
+
+// Page metadata
+const pageTitle = "Expositions - Serra 2.0";
+const pageDescription = "Upcoming and past exhibitions of the Serra 2.0 art project";
+
+// Expositions data - Easy to maintain array
+// Simply add new objects to this array to add new expositions
+const expositions = [
+  {
+    name: "Gallery Modern Art Paris",
+    address: "15 Rue de la Paix, 75002 Paris, France",
+    startDate: "2026-03-15",
+    endDate: "2026-04-30",
+    website: "https://example.com/gallery",
+    status: "upcoming" // upcoming, ongoing, or past
+  },
+  {
+    name: "Contemporary Art Center Lyon",
+    address: "28 Avenue des Arts, 69003 Lyon, France",
+    startDate: "2026-05-10",
+    endDate: "2026-06-20",
+    website: "https://example.com/lyon",
+    status: "upcoming"
+  },
+  {
+    name: "Espace d'Art Marseille",
+    address: "42 Boulevard de la Culture, 13001 Marseille, France",
+    startDate: "2025-12-01",
+    endDate: "2026-01-15",
+    website: "https://example.com/marseille",
+    status: "past"
+  }
+];
+
+// Helper function to format dates
+function formatDate(dateString: string): string {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+}
+
+// Separate expositions by status
+const upcomingExpositions = expositions.filter(exp => exp.status === 'upcoming');
+const ongoingExpositions = expositions.filter(exp => exp.status === 'ongoing');
+const pastExpositions = expositions.filter(exp => exp.status === 'past');
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content={pageDescription}>
+  <title>{pageTitle}</title>
+  
+  <style>
+    /* CSS Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f9f9f9;
+      padding-top: 80px; /* Account for fixed navigation */
+    }
+
+    /* Page header */
+    .page-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      margin-bottom: 1rem;
+    }
+
+    .page-header p {
+      font-size: 1.2rem;
+      opacity: 0.95;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Container for content sections */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    /* Section styling */
+    .expo-section {
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      color: #2c3e50;
+      margin-bottom: 2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #667eea;
+    }
+
+    /* Expositions grid */
+    .expo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    /* Exposition card */
+    .expo-card {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .expo-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+    }
+
+    /* Status badge */
+    .status-badge {
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      width: fit-content;
+    }
+
+    .status-badge.upcoming {
+      background: #e3f2fd;
+      color: #1976d2;
+    }
+
+    .status-badge.ongoing {
+      background: #e8f5e9;
+      color: #388e3c;
+    }
+
+    .status-badge.past {
+      background: #f3e5f5;
+      color: #7b1fa2;
+    }
+
+    /* Exposition name */
+    .expo-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 1rem;
+    }
+
+    /* Exposition details */
+    .expo-detail {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 0.8rem;
+      color: #555;
+    }
+
+    .expo-detail-icon {
+      margin-right: 0.8rem;
+      font-size: 1.2rem;
+      min-width: 24px;
+    }
+
+    .expo-detail-text {
+      flex: 1;
+    }
+
+    .expo-dates {
+      font-weight: 600;
+      color: #667eea;
+    }
+
+    /* Button styling */
+    .expo-button {
+      margin-top: auto;
+      padding: 0.8rem 1.5rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      text-align: center;
+      font-weight: 600;
+      transition: opacity 0.3s ease;
+      display: inline-block;
+    }
+
+    .expo-button:hover {
+      opacity: 0.9;
+    }
+
+    /* Empty state message */
+    .empty-message {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: #7f8c8d;
+      font-size: 1.1rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .expo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .page-header {
+        padding: 3rem 1.5rem 2rem;
+      }
+
+      .container {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Import Navigation Component -->
+  <Navigation currentPage="expositions" />
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <h1>Expositions</h1>
+    <p>Discover where you can experience the Serra 2.0 art project in person</p>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    
+    <!-- Ongoing Expositions -->
+    {ongoingExpositions.length > 0 && (
+      <section class="expo-section">
+        <h2 class="section-title">Currently On Display</h2>
+        <div class="expo-grid">
+          {ongoingExpositions.map((expo) => (
+            <article class="expo-card">
+              <span class="status-badge ongoing">Ongoing</span>
+              <h3 class="expo-name">{expo.name}</h3>
+              
+              <div class="expo-detail">
+                <span class="expo-detail-icon">📍</span>
+                <span class="expo-detail-text">{expo.address}</span>
+              </div>
+              
+              <div class="expo-detail">
+                <span class="expo-detail-icon">📅</span>
+                <span class="expo-detail-text">
+                  <span class="expo-dates">
+                    {formatDate(expo.startDate)} - {formatDate(expo.endDate)}
+                  </span>
+                </span>
+              </div>
+              
+              {expo.website && (
+                <a href={expo.website} target="_blank" rel="noopener noreferrer" class="expo-button">
+                  Visit Website →
+                </a>
+              )}
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Upcoming Expositions -->
+    {upcomingExpositions.length > 0 && (
+      <section class="expo-section">
+        <h2 class="section-title">Upcoming Expositions</h2>
+        <div class="expo-grid">
+          {upcomingExpositions.map((expo) => (
+            <article class="expo-card">
+              <span class="status-badge upcoming">Upcoming</span>
+              <h3 class="expo-name">{expo.name}</h3>
+              
+              <div class="expo-detail">
+                <span class="expo-detail-icon">📍</span>
+                <span class="expo-detail-text">{expo.address}</span>
+              </div>
+              
+              <div class="expo-detail">
+                <span class="expo-detail-icon">📅</span>
+                <span class="expo-detail-text">
+                  <span class="expo-dates">
+                    {formatDate(expo.startDate)} - {formatDate(expo.endDate)}
+                  </span>
+                </span>
+              </div>
+              
+              {expo.website && (
+                <a href={expo.website} target="_blank" rel="noopener noreferrer" class="expo-button">
+                  Visit Website →
+                </a>
+              )}
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Past Expositions -->
+    {pastExpositions.length > 0 && (
+      <section class="expo-section">
+        <h2 class="section-title">Past Expositions</h2>
+        <div class="expo-grid">
+          {pastExpositions.map((expo) => (
+            <article class="expo-card">
+              <span class="status-badge past">Past</span>
+              <h3 class="expo-name">{expo.name}</h3>
+              
+              <div class="expo-detail">
+                <span class="expo-detail-icon">📍</span>
+                <span class="expo-detail-text">{expo.address}</span>
+              </div>
+              
+              <div class="expo-detail">
+                <span class="expo-detail-icon">📅</span>
+                <span class="expo-detail-text">
+                  <span class="expo-dates">
+                    {formatDate(expo.startDate)} - {formatDate(expo.endDate)}
+                  </span>
+                </span>
+              </div>
+              
+              {expo.website && (
+                <a href={expo.website} target="_blank" rel="noopener noreferrer" class="expo-button">
+                  Visit Website →
+                </a>
+              )}
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Empty state - if no expositions exist -->
+    {expositions.length === 0 && (
+      <div class="empty-message">
+        <p>No expositions scheduled at the moment. Check back soon!</p>
+      </div>
+    )}
+
+  </main>
+
+  <!-- Footer -->
+  <footer style="background: #2c3e50; color: white; text-align: center; padding: 2rem;">
+    <p>&copy; 2026 Serra 2.0 Project. All rights reserved.</p>
+  </footer>
+</body>
+</html>

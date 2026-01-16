@@ -1,0 +1,362 @@
+---
+// Serra 2.0 Landing Page
+// Main landing page for the art project inspired by Serra Angel from Magic the Gathering
+
+// Import the reusable Navigation component
+import Navigation from '../components/navbar.astro';
+
+// Page metadata
+const pageTitle = "Serra 2.0 - Reimagining Serra Angel";
+const pageDescription = "An art project celebrating Serra Angel through contemporary artistic interpretations";
+
+// Featured artists data - easily maintainable array
+const artists = [
+  {
+    name: "Artist Name 1",
+    specialty: "Digital Illustration",
+    image: "/artists/artist1.jpg" // Replace with actual image paths
+  },
+  {
+    name: "Artist Name 2",
+    specialty: "Traditional Painting",
+    image: "/artists/artist2.jpg"
+  },
+  {
+    name: "Artist Name 3",
+    specialty: "3D Sculpture",
+    image: "/artists/artist3.jpg"
+  }
+];
+
+// Featured artworks data
+const artworks = [
+  {
+    title: "Artwork Title 1",
+    artist: "Artist Name 1",
+    image: "/artworks/work1.jpg",
+    description: "Brief description of the artwork"
+  },
+  {
+    title: "Artwork Title 2",
+    artist: "Artist Name 2",
+    image: "/artworks/work2.jpg",
+    description: "Brief description of the artwork"
+  },
+  {
+    title: "Artwork Title 3",
+    artist: "Artist Name 3",
+    image: "/artworks/work3.jpg",
+    description: "Brief description of the artwork"
+  }
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content={pageDescription}>
+  <title>{pageTitle}</title>
+  
+  <style>
+    /* CSS Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f9f9f9;
+    }
+
+    /* Hero Section - Full viewport height introduction */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      color: white;
+      padding-top: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Hero background image */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('../../public/Serra2024.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hero-content p {
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      opacity: 0.95;
+    }
+
+    /* Container for content sections */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    /* Section headers */
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      text-align: center;
+      margin-bottom: 3rem;
+      color: #2c3e50;
+    }
+
+    /* About section */
+    .about {
+      background: white;
+      padding: 4rem 2rem;
+    }
+
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    /* Artists grid - responsive 3-column layout */
+    .artists-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .artist-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .artist-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+    }
+
+    .artist-image {
+      width: 100%;
+      height: 300px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    .artist-info {
+      padding: 1.5rem;
+    }
+
+    .artist-name {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #2c3e50;
+    }
+
+    .artist-specialty {
+      color: #7f8c8d;
+      font-style: italic;
+    }
+
+    /* Artworks section */
+    .artworks {
+      background: #f0f0f0;
+    }
+
+    .artworks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+
+    .artwork-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .artwork-card:hover {
+      transform: scale(1.02);
+    }
+
+    .artwork-image {
+      width: 100%;
+      height: 400px;
+      background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    .artwork-details {
+      padding: 1.5rem;
+    }
+
+    .artwork-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #2c3e50;
+    }
+
+    .artwork-artist {
+      color: #667eea;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .artwork-description {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      background: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero {
+        min-height: 80vh;
+      }
+      
+      .container {
+        padding: 3rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Import Navigation Component -->
+  <Navigation currentPage="home" />
+
+  <!-- Hero Section - Main introduction to the project -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Serra 2.0</h1>
+      <p>A contemporary reimagining of the iconic Serra Angel through the eyes of diverse artists</p>
+    </div>
+  </section>
+
+  <!-- About Section - Project description -->
+  <section class="about" id="about">
+    <div class="container">
+      <h2 class="section-title">About the Project</h2>
+      <div class="about-content">
+        <p>
+          Serra 2.0 is an artistic tribute to one of Magic: The Gathering's most beloved creatures, 
+          Serra Angel. This project brings together talented artists from various disciplines to 
+          reinterpret this iconic card through modern artistic lenses, celebrating both the original's 
+          legacy and the endless possibilities of creative expression.
+        </p>
+        <p style="margin-top: 1rem;">
+          Each piece in this collection offers a unique perspective, from traditional painting to 
+          digital illustration and three-dimensional sculpture, united by their reverence for the 
+          source material and their bold artistic vision.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Artists Section -->
+  <section class="artists" id="artists">
+    <div class="container">
+      <h2 class="section-title">Featured Artists</h2>
+      <div class="artists-grid">
+        {artists.map((artist) => (
+          <div class="artist-card">
+            <div class="artist-image">
+              <!-- Replace with actual image: <img src={artist.image} alt={artist.name} /> -->
+              Artist Photo
+            </div>
+            <div class="artist-info">
+              <h3 class="artist-name">{artist.name}</h3>
+              <p class="artist-specialty">{artist.specialty}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Artworks Section -->
+  <section class="artworks" id="artworks">
+    <div class="container">
+      <h2 class="section-title">Featured Artworks</h2>
+      <div class="artworks-grid">
+        {artworks.map((artwork) => (
+          <div class="artwork-card">
+            <div class="artwork-image">
+              <!-- Replace with actual image: <img src={artwork.image} alt={artwork.title} /> -->
+              Artwork Preview
+            </div>
+            <div class="artwork-details">
+              <h3 class="artwork-title">{artwork.title}</h3>
+              <p class="artwork-artist">by {artwork.artist}</p>
+              <p class="artwork-description">{artwork.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Serra 2.0 Project. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+</html>
