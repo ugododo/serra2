@@ -2,56 +2,13 @@
 // Serra 2.0 Landing Page
 // Main landing page for the art project inspired by Serra Angel from Magic the Gathering
 
-// Import the global stylesheet
+// Import the reusable Navigation component and global styles
 import '../styles/global.css';
-
-// Import the reusable Navigation component
 import Navigation from '../components/navbar.astro';
 
 // Page metadata
 const pageTitle = "Serra 2.0 - Reimagining Serra Angel";
 const pageDescription = "An art project celebrating Serra Angel through contemporary artistic interpretations";
-
-// Featured artists data - easily maintainable array
-const artists = [
-  {
-    name: "Artist Name 1",
-    specialty: "Digital Illustration",
-    image: "/artists/artist1.jpg" // Replace with actual image paths
-  },
-  {
-    name: "Artist Name 2",
-    specialty: "Traditional Painting",
-    image: "/artists/artist2.jpg"
-  },
-  {
-    name: "Artist Name 3",
-    specialty: "3D Sculpture",
-    image: "/artists/artist3.jpg"
-  }
-];
-
-// Featured artworks data
-const artworks = [
-  {
-    title: "Artwork Title 1",
-    artist: "Artist Name 1",
-    image: "/artworks/work1.jpg",
-    description: "Brief description of the artwork"
-  },
-  {
-    title: "Artwork Title 2",
-    artist: "Artist Name 2",
-    image: "/artworks/work2.jpg",
-    description: "Brief description of the artwork"
-  },
-  {
-    title: "Artwork Title 3",
-    artist: "Artist Name 3",
-    image: "/artworks/work3.jpg",
-    description: "Brief description of the artwork"
-  }
-];
 ---
 
 <!DOCTYPE html>
@@ -91,49 +48,6 @@ const artworks = [
           digital illustration and three-dimensional sculpture, united by their reverence for the 
           source material and their bold artistic vision.
         </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured Artists Section -->
-  <section class="artists" id="artists">
-    <div class="container">
-      <h2 class="section-title">Featured Artists</h2>
-      <div class="artists-grid">
-        {artists.map((artist) => (
-          <div class="artist-card">
-            <div class="artist-image">
-              <!-- Replace with actual image: <img src={artist.image} alt={artist.name} /> -->
-              Artist Photo
-            </div>
-            <div class="artist-info">
-              <h3 class="artist-name">{artist.name}</h3>
-              <p class="artist-specialty">{artist.specialty}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured Artworks Section -->
-  <section class="artworks" id="artworks">
-    <div class="container">
-      <h2 class="section-title">Featured Artworks</h2>
-      <div class="artworks-grid">
-        {artworks.map((artwork) => (
-          <div class="artwork-card">
-            <div class="artwork-image">
-              <!-- Replace with actual image: <img src={artwork.image} alt={artwork.title} /> -->
-              Artwork Preview
-            </div>
-            <div class="artwork-details">
-              <h3 class="artwork-title">{artwork.title}</h3>
-              <p class="artwork-artist">by {artwork.artist}</p>
-              <p class="artwork-description">{artwork.description}</p>
-            </div>
-          </div>
-        ))}
       </div>
     </div>
   </section>
