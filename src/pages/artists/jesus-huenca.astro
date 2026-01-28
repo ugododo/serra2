@@ -14,12 +14,12 @@ const artist = {
   artworks: [
     {
       title: "Artwork Title 1",
-      image: "/artworks/artist1-work1.jpg",
+      image: "/artists-artworks/JesusHuencaCard.JPG",
       description: "A detailed description of this artwork, the concept behind it, and what makes it special."
     },
     {
       title: "Artwork Title 2",
-      image: "/artworks/artist1-work2.jpg",
+      image: "/artists-artworks/JesusHuencaFramed.jpg",
       description: "A detailed description of this artwork, the concept behind it, and what makes it special."
     },
     {
@@ -64,13 +64,7 @@ const pageDescription = `Explore ${artist.name}'s artworks for the Serra 2.0 pro
       {artist.artworks.map((artwork) => (
         <div class="artist-detail-artwork-card">
           <div class="artist-detail-artwork-image">
-            <!-- Replace with actual image when available -->
-            <div class="artist-detail-artwork-placeholder">
-              {artwork.title}
-            </div>
-            <!-- Uncomment when images are available:
             <img src={artwork.image} alt={artwork.title} />
-            -->
           </div>
           <div class="artist-detail-artwork-info">
             <h3 class="artist-detail-artwork-title">{artwork.title}</h3>
@@ -87,116 +81,3 @@ const pageDescription = `Explore ${artist.name}'s artworks for the Serra 2.0 pro
   </footer>
 </body>
 </html>
-
-<style>
-  /* Artist Detail Header */
-  .artist-detail-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 6rem 2rem 4rem;
-  }
-
-  .back-link {
-    color: white;
-    text-decoration: none;
-    font-size: 1rem;
-    opacity: 0.9;
-    transition: opacity 0.3s ease;
-    display: inline-block;
-    margin-bottom: 2rem;
-  }
-
-  .back-link:hover {
-    opacity: 1;
-  }
-
-  .artist-detail-name {
-    font-size: clamp(2.5rem, 6vw, 4rem);
-    margin-bottom: 2rem;
-    font-weight: 700;
-  }
-
-  .artist-detail-bio {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    max-width: 800px;
-    opacity: 0.95;
-  }
-
-  /* Artworks Grid */
-  .artist-detail-artworks-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2.5rem;
-    margin-top: 2rem;
-    padding-bottom: 4rem;
-  }
-
-  .artist-detail-artwork-card {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .artist-detail-artwork-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
-  }
-
-  .artist-detail-artwork-image {
-    width: 100%;
-    height: 400px;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .artist-detail-artwork-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .artist-detail-artwork-placeholder {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.3rem;
-    font-weight: 600;
-    padding: 2rem;
-    text-align: center;
-  }
-
-  .artist-detail-artwork-info {
-    padding: 2rem;
-  }
-
-  .artist-detail-artwork-title {
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: #2c3e50;
-    margin-bottom: 1rem;
-  }
-
-  .artist-detail-artwork-description {
-    color: #666;
-    line-height: 1.8;
-    font-size: 1.05rem;
-  }
-
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .artist-detail-header {
-      padding: 5rem 1.5rem 3rem;
-    }
-
-    .artist-detail-artworks-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>
