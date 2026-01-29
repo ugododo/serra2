@@ -704,7 +704,134 @@
     gap: 2rem;
     padding: 2rem 0;
   }
-  
+
+  /* ==================== Participate page ==================== */
+
+  /* Introduction Section */
+  .participate-intro {
+    background: white;
+    padding: 3rem;
+    border-radius: 12px;
+    margin-bottom: 4rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  .participate-intro h2 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+  }
+
+  .participate-intro p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 1rem;
+  }
+
+  .participate-intro p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Documents Section */
+  .participate-documents {
+    margin-bottom: 4rem;
+  }
+
+  .documents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .document-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .document-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+  }
+
+  .document-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .document-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+
+  .document-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+  }
+
+  .document-button {
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, #d4a574 0%, #c9941e 100%);
+    color: white;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: opacity 0.3s ease;
+  }
+
+  .document-card:hover .document-button {
+    opacity: 0.9;
+  }
+
+  /* Call to Action Section */
+  .participate-cta {
+    background: linear-gradient(135deg, #d4a574 0%, #c9941e 100%);
+    color: white;
+    padding: 3rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  .participate-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .participate-cta p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.95;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .participate-intro,
+    .participate-cta {
+      padding: 2rem 1.5rem;
+    }
+
+    .documents-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
   /* ==================== Footer ==================== */
   footer {
     background: #2c3e50;
