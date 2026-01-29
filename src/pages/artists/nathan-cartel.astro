@@ -7,6 +7,9 @@
 import '../../styles/global.css';
 import Navigation from '../../components/navbar.astro';
 
+// Base URL for GitHub Pages
+const baseUrl = '/serra2';
+
 // Artist data - Update this for each artist
 const artist = {
   name: "Nathan Cartel",
@@ -14,12 +17,12 @@ const artist = {
   artworks: [
     {
       title: "Artwork Title 1",
-      image: "/artists-artworks/NathanCartelCard.jpg",
+      image: `${baseUrl}/artists-artworks/NathanCartelCard.jpg`,
       description: "A detailed description of this artwork, the concept behind it, and what makes it special."
     },
     {
       title: "Artwork Title 2",
-      image: "/artists-artworks/NathanCartelFramed.jpg",
+      image: `${baseUrl}/artists-artworks/NathanCartelFramed.jpg`,
       description: "A detailed description of this artwork, the concept behind it, and what makes it special."
     },
     {
@@ -51,7 +54,7 @@ const pageDescription = `Explore ${artist.name}'s artworks for the Serra 2.0 pro
   <!-- Artist Header -->
   <header class="artist-detail-header">
     <div class="container">
-      <a href="/artists" class="back-link">← Back to Artists</a>
+      <a href={`${baseUrl}/artists/`} class="back-link">← Back to Artists</a>
       <h1 class="artist-detail-name">{artist.name}</h1>
       <p class="artist-detail-bio">{artist.bio}</p>
     </div>

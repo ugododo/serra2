@@ -13,43 +13,46 @@ import ArtistCard from '../components/artist_card.astro';
 const pageTitle = "Artists - Serra 2.0";
 const pageDescription = "Meet the talented artists behind the Serra 2.0 project";
 
+// Base URL for GitHub Pages
+const baseUrl = '/serra2';
+
 // Artists data - Easy to maintain
 // To add a new artist: add an object here with name, photo, and slug
 // The slug should be URL-friendly (lowercase, hyphens instead of spaces)
 const artists = [
   {
     name: "Amber Cartel",
-    photo: "/artists-artworks/AmberCartel.jpg",
+    photo: `${baseUrl}/artists-artworks/AmberCartel.jpg`,
     slug: "amber-cartel"
   },
   {
     name: "Jesus Huenca",
-    photo: "/artists-artworks/JesusHuenca.jpg",
+    photo: `${baseUrl}/artists-artworks/JesusHuenca.jpg`,
     slug: "jesus-huenca"
   },
   {
     name: "Nathan Cartel",
-    photo: "/artists-artworks/NathanCartel.jpg",
+    photo: `${baseUrl}/artists-artworks/NathanCartel.jpg`,
     slug: "nathan-cartel"
   },
   {
     name: "István Bukovszki",
-    photo: "/artists-artworks/Istvan.jpg",
+    photo: `${baseUrl}/artists-artworks/Istvan.jpg`,
     slug: "istvan-bukovszki"
   },
   {
     name: "Michele Braschi",
-    photo: "/artists-artworks/Braschi.jpg",
+    photo: `${baseUrl}/artists-artworks/Braschi.jpg`,
     slug: "michele-braschi"
   },
   {
     name: "Ann Cartel",
-    photo: "/artists-artworks/AnnCartel.JPG",
+    photo: `${baseUrl}/artists-artworks/AnnCartel.JPG`,
     slug: "ann-cartel"
   },
   {
     name: "Aleix Escura Bello",
-    photo: "/artists-artworks/Escura.JPG",
+    photo: `${baseUrl}/artists-artworks/Escura.JPG`,
     slug: "aleix-escura-bello"
   }
 ];

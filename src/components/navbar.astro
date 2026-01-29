@@ -10,6 +10,9 @@ interface Props {
 }
 
 const { currentPage = 'home' } = Astro.props;
+
+// Base URL for GitHub Pages
+const baseUrl = '/serra2';
 ---
 
 <!-- Navigation Bar -->
@@ -20,11 +23,11 @@ const { currentPage = 'home' } = Astro.props;
     <button class="menu-toggle" id="menuToggle">☰</button>
     
     <div class="nav-buttons" id="navButtons">
-      <a href="/#about" class="nav-btn" data-page="home">About</a>
-      <a href="/artists" class="nav-btn" data-page="home">Artists</a>
-      <a href="/expositions" class="nav-btn">Expositions</a>
-      <a href="/partners" class="nav-btn">Partners</a>
-      <a href="/participate" class="nav-btn">Participate</a>
+      <a href={`${baseUrl}/#about/`} class="nav-btn" data-page="home">About</a>
+      <a href={`${baseUrl}/artists/`} class="nav-btn" data-page="home">Artists</a>
+      <a href={`${baseUrl}/expositions/`} class="nav-btn">Expositions</a>
+      <a href={`${baseUrl}/partners/`} class="nav-btn">Partners</a>
+      <a href={`${baseUrl}/participate/`} class="nav-btn">Participate</a>
     </div>
   </div>
 </nav>

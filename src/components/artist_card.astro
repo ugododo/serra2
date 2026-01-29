@@ -11,9 +11,12 @@ interface Props {
 }
 
 const { name, photo, slug } = Astro.props;
+
+// Base URL for GitHub Pages
+const baseUrl = '/serra2';
 ---
 
-<a href={`/artists/${slug}`} class="artist-card-link">
+<a href={`${baseUrl}/artists/${slug}`} class="artist-card-link">
   <div class="artist-card-compact">
     <div class="artist-photo">
       <img src={photo} alt={name} />
