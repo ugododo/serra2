@@ -13,6 +13,7 @@ const baseUrl = '/serra2';
 // Artist data - Update this for each artist
 const artist = {
   name: "Artist Name 1",
+  photo : "",
   bio: "This is where you'll add the artist's introduction text. Describe their background, artistic style, and connection to the Serra Angel theme. You can write as much or as little as you need here.",
   artworks: [
     {
@@ -51,12 +52,19 @@ const pageDescription = `Explore ${artist.name}'s artworks for the Serra 2.0 pro
   <!-- Import Navigation Component -->
   <Navigation currentPage="artists" />
 
-  <!-- Artist Header -->
+  <!-- Artist Header with Photo -->
   <header class="artist-detail-header">
     <div class="container">
-      <a href={`${baseUrl}/artists/`} class="back-link">← Back to Artists</a>
-      <h1 class="artist-detail-name">{artist.name}</h1>
-      <p class="artist-detail-bio">{artist.bio}</p>
+      <a href={`${baseUrl}/artists`} class="back-link">← Back to Artists</a>
+      <div class="artist-header-content">
+        <div class="artist-header-text">
+          <h1 class="artist-detail-name">{artist.name}</h1>
+          <p class="artist-detail-bio">{artist.bio}</p>
+        </div>
+        <div class="artist-header-photo">
+          <img src={artist.photo} alt={artist.name} />
+        </div>
+      </div>
     </div>
   </header>
 
@@ -67,9 +75,6 @@ const pageDescription = `Explore ${artist.name}'s artworks for the Serra 2.0 pro
       {artist.artworks.map((artwork) => (
         <div class="artist-detail-artwork-card">
           <div class="artist-detail-artwork-image">
-            <div class="artist-detail-artwork-placeholder">
-              {artwork.title}
-            </div>
             <img src={artwork.image} alt={artwork.title} />
           </div>
           <div class="artist-detail-artwork-info">

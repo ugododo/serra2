@@ -171,7 +171,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('/Serra2024.jpg');
+    background-image: url('/serra2/Serra2024.jpg');
     background-size: cover;
     background-position: center;
     opacity: 0.3;
@@ -598,105 +598,133 @@
     margin: 0;
   }
   
-  /* ==================== Artist Detail Page Styles ==================== */
-  .artist-detail-header {
-    background: linear-gradient(135deg, #d4a574 0%, #c9941e 100%);
-    color: white;
-    padding: 6rem 2rem 4rem;
-  }
-  
-  .back-link {
-    color: white;
-    text-decoration: none;
-    font-size: 1rem;
-    opacity: 0.9;
-    transition: opacity 0.3s ease;
-    display: inline-block;
-    margin-bottom: 2rem;
-  }
-  
-  .back-link:hover {
-    opacity: 1;
-  }
-  
-  .artist-detail-name {
-    font-size: clamp(2.5rem, 6vw, 4rem);
-    margin-bottom: 2rem;
-    font-weight: 700;
-  }
-  
-  .artist-detail-bio {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    max-width: 800px;
-    opacity: 0.95;
-  }
-  
-  .artist-detail-artworks-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2.5rem;
-    margin-top: 2rem;
-    padding-bottom: 4rem;
-  }
-  
-  .artist-detail-artwork-card {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .artist-detail-artwork-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
-  }
-  
-  .artist-detail-artwork-image {
-    width: 100%;
-    height: 400px;
-    overflow: hidden;
-    position: relative;
-  }
-  
-  .artist-detail-artwork-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .artist-detail-artwork-placeholder {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #c9941e 0%, #d4a574 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.3rem;
-    font-weight: 600;
-    padding: 2rem;
-    text-align: center;
-  }
-  
-  .artist-detail-artwork-info {
-    padding: 2rem;
-  }
-  
-  .artist-detail-artwork-title {
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: #2c3e50;
-    margin-bottom: 1rem;
-  }
-  
-  .artist-detail-artwork-description {
-    color: #666;
-    line-height: 1.8;
-    font-size: 1.05rem;
-  }
-  
+/* ==================== Artist Detail Page Styles ==================== */
+.artist-detail-header {
+  background: linear-gradient(135deg, #d4a574 0%, #c9941e 100%);
+  color: white;
+  padding: 6rem 2rem 4rem;
+}
+
+.back-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+
+.back-link:hover {
+  opacity: 1;
+}
+
+.artist-header-content {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+
+.artist-header-photo {
+  flex-shrink: 0;
+}
+
+.artist-header-photo img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.artist-header-text {
+  flex: 1;
+}
+
+.artist-detail-name {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+.artist-detail-bio {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  max-width: 800px;
+  opacity: 0.95;
+}
+
+.artist-detail-artworks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  margin-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+.artist-detail-artwork-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.artist-detail-artwork-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+}
+
+.artist-detail-artwork-image {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+}
+
+.artist-detail-artwork-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.artist-detail-artwork-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #c9941e 0%, #d4a574 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding: 2rem;
+  text-align: center;
+}
+
+.artist-detail-artwork-info {
+  padding: 2rem;
+}
+
+/* Remove padding when info section is empty */
+.artist-detail-artwork-info:empty {
+  padding: 0;
+  display: none;
+}
+
+.artist-detail-artwork-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.artist-detail-artwork-description {
+  color: #666;
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
   /* ==================== Artists Overview Page Grid ==================== */
   .artists-compact-grid {
     display: grid;
@@ -841,50 +869,61 @@
   }
   
   /* ==================== Responsive Adjustments ==================== */
-  @media (max-width: 768px) {
-    body {
-      padding-top: 70px;
-    }
-  
-    .hero {
-      min-height: 80vh;
-    }
-    
-    .container {
-      padding: 3rem 1.5rem;
-    }
-  
-    .page-header {
-      padding: 3rem 1.5rem 2rem;
-    }
-  
-    .expo-grid {
-      grid-template-columns: 1fr;
-    }
-  
-    .partners-grid {
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    }
-  
-    .artist-photo {
-      width: 120px;
-      height: 120px;
-    }
-  
-    .artist-card-name {
-      font-size: 1.3rem;
-    }
-  
-    .artists-compact-grid {
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1.5rem;
-    }
-  
-    .artist-detail-header {
-      padding: 5rem 1.5rem 3rem;
-    }
-  
-    .artist-detail-artworks-grid {
-      grid-template-columns: 1fr;
-    }
+@media (max-width: 768px) {
+  body {
+    padding-top: 70px;
   }
+
+  .hero {
+    min-height: 80vh;
+  }
+  
+  .container {
+    padding: 3rem 1.5rem;
+  }
+
+  .page-header {
+    padding: 3rem 1.5rem 2rem;
+  }
+
+  .expo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .partners-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  .artist-photo {
+    width: 120px;
+    height: 120px;
+  }
+
+  .artist-card-name {
+    font-size: 1.3rem;
+  }
+
+  .artists-compact-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .artist-detail-header {
+    padding: 5rem 1.5rem 3rem;
+  }
+
+  .artist-header-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .artist-header-photo img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .artist-detail-artworks-grid {
+    grid-template-columns: 1fr;
+  }
+}

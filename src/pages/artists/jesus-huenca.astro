@@ -13,6 +13,7 @@ const baseUrl = '/serra2';
 // Artist data - Update this for each artist
 const artist = {
   name: "Jesus Huenca",
+  photo: `${baseUrl}/artists-artworks/JesusHuenca.jpg`,
   bio: "Jesús Huanca is a Bolivian artist. He has twice received the Eduardo Abaroa National Prize, awarded by the Bolivian Ministry of Culture, in the drawing and painting categories. In 2025, he will revisit the age-old theme of the seven deadly sins in a new solo exhibition: Three Perspectives, One Story: Jesús Huanca and the Seven Deadly Sins. We are also fortunate to have him as part of the MTG player and Alter Artists community, even if his presence is still relatively low-key. This exhibition offers an opportunity to discover his work. Contact : Trend x Autor on instagram ",
   artworks: [
     {
@@ -51,12 +52,19 @@ const pageDescription = `Explore ${artist.name}'s artworks for the Serra 2.0 pro
   <!-- Import Navigation Component -->
   <Navigation currentPage="artists" />
 
-  <!-- Artist Header -->
+  <!-- Artist Header with Photo -->
   <header class="artist-detail-header">
     <div class="container">
-      <a href={`${baseUrl}/artists/`} class="back-link">← Back to Artists</a>
-      <h1 class="artist-detail-name">{artist.name}</h1>
-      <p class="artist-detail-bio">{artist.bio}</p>
+      <a href={`${baseUrl}/artists`} class="back-link">← Back to Artists</a>
+      <div class="artist-header-content">
+        <div class="artist-header-text">
+          <h1 class="artist-detail-name">{artist.name}</h1>
+          <p class="artist-detail-bio">{artist.bio}</p>
+        </div>
+        <div class="artist-header-photo">
+          <img src={artist.photo} alt={artist.name} />
+        </div>
+      </div>
     </div>
   </header>
 
