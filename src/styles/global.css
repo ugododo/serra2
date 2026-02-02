@@ -101,7 +101,79 @@
       display: block;
     }
   
-    .nav-buttons {
+    /* Serra Quote Styling */
+  .serra-quote {
+    font-style: italic;
+    text-align: center;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #c9941e;
+    margin: 2rem auto 3rem;
+    padding: 2rem;
+    max-width: 800px;
+    position: relative;
+    border-top: 2px solid rgba(201, 148, 30, 0.3);
+    border-bottom: 2px solid rgba(201, 148, 30, 0.3);
+  }
+
+  .serra-quote::before {
+    content: '✦';
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #d4a574;
+  }
+
+  .serra-quote::after {
+    content: '✦';
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    color: #d4a574;
+  }
+
+  /* About Text Styling */
+  .about-text {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .about-text p {
+    text-align: justify;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    color: rgba(0, 0, 0);
+    font-size: 1.05rem;
+  }
+
+  .about-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .serra-quote {
+      font-size: 1.1rem;
+      padding: 1.5rem 1rem;
+      margin: 1.5rem auto 2rem;
+      line-height: 1.5;
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      text-align: left; /* On mobile, left-align is often more readable */
+      line-height: 1.4;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .serra-quote {
+      font-size: 1rem;
+      padding: 1rem;
+    }
+  }.nav-buttons {
       position: fixed;
       top: 70px;
       left: 0;
@@ -128,6 +200,103 @@
     }
   }
   
+  /* Dropdown container */
+  .nav-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Dropdown toggle button */
+  .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+  }
+
+  .dropdown-arrow {
+    font-size: 0.7em;
+    transition: transform 0.3s ease;
+  }
+
+  .dropdown-toggle:hover .dropdown-arrow,
+  .dropdown-toggle.active .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+
+  /* Dropdown menu */
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    background: rgba(20, 20, 30, 0.98);
+    border: 1px solid rgba(201, 148, 30, 0.3);
+    border-radius: 8px;
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+  }
+
+  .dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* Dropdown items */
+  .dropdown-item {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+  }
+
+  .dropdown-item:hover {
+    background: rgba(201, 148, 30, 0.1);
+    color: #c9941e;
+    border-left-color: #c9941e;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .dropdown-menu {
+      position: static;
+      width: 100%;
+      border: none;
+      border-radius: 0;
+      background: rgba(15, 15, 25, 0.95);
+      margin-top: 0;
+      padding: 0;
+      transform: none;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .dropdown-menu.show {
+      max-height: 500px;
+      padding: 0.5rem 0;
+      border-top: 1px solid rgba(201, 148, 30, 0.2);
+    }
+
+    .dropdown-item {
+      padding-left: 2.5rem;
+    }
+  }
+
   /* ==================== Page Headers ==================== */
   .page-header {
     background: linear-gradient(135deg, #d4a574 0%, #c9941e 100%);
@@ -225,6 +394,80 @@
     color: #555;
   }
   
+  /* Serra Quote Styling */
+  .serra-quote {
+    font-style: italic;
+    text-align: center;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #c9941e;
+    margin: 2rem auto 3rem;
+    padding: 2rem;
+    max-width: 800px;
+    position: relative;
+    border-top: 2px solid rgba(201, 148, 30, 0.3);
+    border-bottom: 2px solid rgba(201, 148, 30, 0.3);
+  }
+
+  .serra-quote::before {
+    content: '✦';
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #d4a574;
+  }
+
+  .serra-quote::after {
+    content: '✦';
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    color: #d4a574;
+  }
+
+  /* About Text Styling */
+  .about-text {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .about-text p {
+    text-align: justify;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    color: rgba(0, 0, 0);
+    font-size: 1.05rem;
+  }
+
+  .about-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .serra-quote {
+      font-size: 1.1rem;
+      padding: 1.5rem 1rem;
+      margin: 1.5rem auto 2rem;
+      line-height: 1.5;
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      text-align: left; /* On mobile, left-align is often more readable */
+      line-height: 1.4;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .serra-quote {
+      font-size: 1rem;
+      padding: 1rem;
+    }
+  }
+
   /* ==================== Artists Grid ==================== */
   .artists-grid {
     display: grid;
