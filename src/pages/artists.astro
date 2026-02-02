@@ -21,41 +21,60 @@ const baseUrl = '/serra2';
 // The slug should be URL-friendly (lowercase, hyphens instead of spaces)
 const artists = [
   {
-    name: "Amber Cartel",
-    photo: `${baseUrl}/artists-artworks/AmberCartel.jpg`,
-    slug: "amber-cartel"
+    name: "Amber-Rose Hulme",
+    lastName: "Hulme",
+    photo: `${baseUrl}/artists-artworks/AmberRose.jpg`,
+    slug: "amber-rose-hulme"
   },
   {
     name: "Jesus Huenca",
+    lastName: "Huenca",
     photo: `${baseUrl}/artists-artworks/JesusHuenca.jpg`,
     slug: "jesus-huenca"
   },
   {
     name: "Nathan Krieg",
+    lastName : "Krieg",
     photo: `${baseUrl}/artists-artworks/NathanKrieg.jpg`,
-    slug: "nathan-cartel"
+    slug: "nathan-krieg"
   },
   {
     name: "István Bukovszki",
+    lastName: "Bukovszki",
     photo: `${baseUrl}/artists-artworks/Istvan.jpg`,
     slug: "istvan-bukovszki"
   },
   {
     name: "Michele Braschi",
+    lastName: "Braschi",
     photo: `${baseUrl}/artists-artworks/Braschi.jpg`,
     slug: "michele-braschi"
   },
   {
-    name: "Ann Cartel",
-    photo: `${baseUrl}/artists-artworks/AnnCartel.JPG`,
-    slug: "ann-cartel"
+    name: "Ann Lachowska",
+    lastName: "Lachoswka",
+    photo: `${baseUrl}/artists-artworks/AnnLachowska.jpg`,
+    slug: "ann-lachowska"
   },
   {
     name: "Aleix Escura Bello",
-    photo: `${baseUrl}/artists-artworks/Escura.JPG`,
+    lastName: "Escura Bello",
+    photo: `${baseUrl}/artists-artworks/Escura.jpg`,
     slug: "aleix-escura-bello"
+  },
+  {
+    name: "Véronique Meignaud",
+    lastName: "Meignaud",
+    photo: `${baseUrl}/artists-artworks/Meignaud.jpg`,
+    slug: "veronique-meignaud"
+  },
+  {
+    name: "Hannes Versmissen",
+    lastName: "Versmissen",
+    photo: `${baseUrl}/artists-artworks/Hannes.jpg`,
+    slug: "hannes-versmissen"
   }
-];
+].sort((a, b) => a.lastName.localeCompare(b.lastName));
 ---
 
 <!DOCTYPE html>

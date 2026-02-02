@@ -13,6 +13,7 @@ const baseUrl = '/serra2';
 // Artist data - Update this for each artist
 const artist = {
   name: "Michele Braschi",
+  photo: `${baseUrl}/artists-artworks/Braschi.jpg`,
   bio: "Michele Braschi is a professional Italian illustrator who has dedicated himself to altering Magic: The Gathering cards for many years. Like the other artists in this exhibition, he brings a unique style to his illustrations, creating them from start to finish, from the initial pencil sketch to the final acrylic painting. He particularly favors small formats, which allow him to give free rein to his imagination and refine the details endlessly… even if his eye sometimes dictates otherwise. A card altered by Michele is immediately recognizable by the Universe that emerges from it, different from the MTG Universe, between poetry and cartoons, sometimes ferocious. Contact: Mibalters on Instagram ",
   artworks: [
     {
@@ -51,12 +52,19 @@ const pageDescription = `Explore ${artist.name}'s artworks for the Serra 2.0 pro
   <!-- Import Navigation Component -->
   <Navigation currentPage="artists" />
 
-  <!-- Artist Header -->
+  <!-- Artist Header with Photo -->
   <header class="artist-detail-header">
     <div class="container">
-      <a href={`${baseUrl}/artists/`} class="back-link">← Back to Artists</a>
-      <h1 class="artist-detail-name">{artist.name}</h1>
-      <p class="artist-detail-bio">{artist.bio}</p>
+      <a href={`${baseUrl}/artists`} class="back-link">← Back to Artists</a>
+      <div class="artist-header-content">
+        <div class="artist-header-text">
+          <h1 class="artist-detail-name">{artist.name}</h1>
+          <p class="artist-detail-bio">{artist.bio}</p>
+        </div>
+        <div class="artist-header-photo">
+          <img src={artist.photo} alt={artist.name} />
+        </div>
+      </div>
     </div>
   </header>
 

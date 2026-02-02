@@ -1,7 +1,6 @@
 ---
 // Navigation Component
 // Reusable navigation bar for all pages in the Serra 2.0 project
-
 import '../styles/global.css';
 
 // You can pass props to customize the active page if needed
@@ -13,18 +12,35 @@ const { currentPage = 'home' } = Astro.props;
 
 // Base URL for GitHub Pages
 const baseUrl = '/serra2';
+
+// About dropdown menu items
+const aboutMenuItems = [
+{ title: 'Template', href: `${baseUrl}/about/template` },
+{ title: 'No babe art', href: `${baseUrl}/about/no-babe-art` },
+];
 ---
 
 <!-- Navigation Bar -->
 <nav>
   <div class="nav-container">
     <a href="/serra2" class="nav-logo">Serra 2.0</a>
-    
     <button class="menu-toggle" id="menuToggle">☰</button>
-    
     <div class="nav-buttons" id="navButtons">
-      <a href={`${baseUrl}/#about/`} class="nav-btn" data-page="home">About</a>
-      <a href={`${baseUrl}/artists/`} class="nav-btn" data-page="home">Artists</a>
+      
+      <!-- About Dropdown Menu -->
+      <div class="nav-dropdown">
+        <button class="nav-btn dropdown-toggle" id="aboutDropdown">
+          About
+          <span class="dropdown-arrow">▼</span>
+        </button>
+        <div class="dropdown-menu" id="aboutMenu">
+          {aboutMenuItems.map(item => (
+            <a href={item.href} class="dropdown-item">{item.title}</a>
+          ))}
+        </div>
+      </div>
+
+      <a href={`${baseUrl}/artists/`} class="nav-btn" data-page="artists">Artists</a>
       <a href={`${baseUrl}/expositions/`} class="nav-btn">Expositions</a>
       <a href={`${baseUrl}/partners/`} class="nav-btn">Partners</a>
       <a href={`${baseUrl}/participate/`} class="nav-btn">Participate</a>
@@ -36,17 +52,47 @@ const baseUrl = '/serra2';
   // Mobile menu toggle functionality
   const menuToggle = document.getElementById('menuToggle');
   const navButtons = document.getElementById('navButtons');
-  
+
   if (menuToggle && navButtons) {
     menuToggle.addEventListener('click', () => {
       navButtons.classList.toggle('active');
     });
 
     // Close mobile menu when clicking a link
-    const navLinks = document.querySelectorAll('.nav-btn');
+    const navLinks = document.querySelectorAll('.nav-btn:not(.dropdown-toggle), .dropdown-item');
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
         navButtons.classList.remove('active');
+      });
+    });
+  }
+
+  // Dropdown menu functionality
+  const aboutDropdown = document.getElementById('aboutDropdown');
+  const aboutMenu = document.getElementById('aboutMenu');
+
+  if (aboutDropdown && aboutMenu) {
+    // Toggle dropdown on click
+    aboutDropdown.addEventListener('click', (e) => {
+      e.stopPropagation();
+      aboutDropdown.classList.toggle('active');
+      aboutMenu.classList.toggle('show');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!aboutDropdown.contains(e.target as Node) && !aboutMenu.contains(e.target as Node)) {
+        aboutDropdown.classList.remove('active');
+        aboutMenu.classList.remove('show');
+      }
+    });
+
+    // Close dropdown when clicking a dropdown item
+    const dropdownItems = aboutMenu.querySelectorAll('.dropdown-item');
+    dropdownItems.forEach(item => {
+      item.addEventListener('click', () => {
+        aboutDropdown.classList.remove('active');
+        aboutMenu.classList.remove('show');
       });
     });
   }

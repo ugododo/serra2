@@ -12,45 +12,19 @@ import Navigation from '../components/navbar.astro';
 const pageTitle = "Partners - Serra 2.0";
 const pageDescription = "Our valued partners and sponsors supporting the Serra 2.0 art project";
 
+// Base URL for GitHub Pages
+const baseUrl = '/serra2';
+
 // Partners data - Easy to maintain array
 // Simply add new objects to this array to add new partners
 // Logo images should be placed in the /public/partners/ folder
+// category is gallery, sponsor, media or supporter
 const partners = [
   {
-    name: "Gallery Modern Art",
-    logo: "/partners/partner1.png", // Replace with actual logo path
-    website: "https://example.com/partner1",
-    category: "gallery" // gallery, sponsor, media, or supporter
-  },
-  {
-    name: "Art Foundation Paris",
-    logo: "/partners/partner2.png",
-    website: "https://example.com/partner2",
+    name: "Play-in",
+    logo: `${baseUrl}/partners/PlayinLogo.png`,
+    website: "https://www.play-in.com/",
     category: "sponsor"
-  },
-  {
-    name: "Creative Magazine",
-    logo: "/partners/partner3.png",
-    website: "https://example.com/partner3",
-    category: "media"
-  },
-  {
-    name: "Cultural Association",
-    logo: "/partners/partner4.png",
-    website: "https://example.com/partner4",
-    category: "supporter"
-  },
-  {
-    name: "Art Supplies Co",
-    logo: "/partners/partner5.png",
-    website: "https://example.com/partner5",
-    category: "sponsor"
-  },
-  {
-    name: "City Gallery Network",
-    logo: "/partners/partner6.png",
-    website: "https://example.com/partner6",
-    category: "gallery"
   }
 ];
 
@@ -92,7 +66,7 @@ const supporters = partners.filter(p => p.category === 'supporter');
             <a href={partner.website} target="_blank" rel="noopener noreferrer" class="partner-card">
               <div class="partner-logo">
                 <!-- Replace placeholder with actual logo when available -->
-                <div class="partner-logo-placeholder">
+                <div class="partner-logo">
                   {partner.name.split(' ').map(word => word[0]).join('')}
                 </div>
                 <!-- Uncomment when logos are available:

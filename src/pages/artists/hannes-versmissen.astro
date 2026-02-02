@@ -12,22 +12,23 @@ const baseUrl = '/serra2';
 
 // Artist data - Update this for each artist
 const artist = {
-  name: "Ann Cartel",
-  bio: "Anna Lachowska is a Polish artist and curator in Warsaw. Before turning to visual art, she spent many years in the fashion industry where she developed her sensitivity to composition, color and details. In 2023, she began focusing on altered MTG cards exploring miniature painting as a new medium for her creativity. Her practice blends influences from Manga and Eastern art using watercolors, ink, markers and airbrushes. Each work transforms a card into a poetic visual narrative, fusion of elegance, precision with a touch of… Magic. She becomes rapidly a well-known AlterArtist in Europe. Contact: Alterann400 on Instagram ",
+  name: "Hannes Versmissen",
+  photo : `${baseUrl}/artists-artworks/Hannes.jpg`,
+  bio: "Hannes Versmissen began painting at a young age and later attended the Royal Academy of Fine Arts of Antwerp during his college years. In 2007, a Tenth Edition starter pack introduced the then young teen to Magic The Gathering. These two worlds converge in his alters, drawing inspiration from a broad range of sources, from classics like Monet and Waterhouse to contemporary artists such as Denis Sarazhin, Pan Inkhoo, Saching Teng, and Ryoko Kui. Contact: Hames_Art on Instagram ",
   artworks: [
     {
-      title: "Artwork Title 1",
-      image: `${baseUrl}/artists-artworks/AnnCartelCard1.jpg`,
-      description: "A detailed description of this artwork, the concept behind it, and what makes it special."
+      title: "",
+      image: `${baseUrl}/artists-artworks/HannesCard.jpg`,
+      description: ""
     },
     {
       title: "Artwork Title 2",
-      image: `${baseUrl}/artists-artworks/AnnCartelCard2.jpg`,
+      image: ``,
       description: "A detailed description of this artwork, the concept behind it, and what makes it special."
     },
     {
       title: "Artwork Title 3",
-      image: `${baseUrl}/artists-artworks/AnnCartelFramed.jpg`,
+      image: "/artworks/artist1-work3.jpg",
       description: "A detailed description of this artwork, the concept behind it, and what makes it special."
     }
   ]
@@ -51,12 +52,19 @@ const pageDescription = `Explore ${artist.name}'s artworks for the Serra 2.0 pro
   <!-- Import Navigation Component -->
   <Navigation currentPage="artists" />
 
-  <!-- Artist Header -->
+  <!-- Artist Header with Photo -->
   <header class="artist-detail-header">
     <div class="container">
-      <a href={`${baseUrl}/artists/`} class="back-link">← Back to Artists</a>
-      <h1 class="artist-detail-name">{artist.name}</h1>
-      <p class="artist-detail-bio">{artist.bio}</p>
+      <a href={`${baseUrl}/artists`} class="back-link">← Back to Artists</a>
+      <div class="artist-header-content">
+        <div class="artist-header-text">
+          <h1 class="artist-detail-name">{artist.name}</h1>
+          <p class="artist-detail-bio">{artist.bio}</p>
+        </div>
+        <div class="artist-header-photo">
+          <img src={artist.photo} alt={artist.name} />
+        </div>
+      </div>
     </div>
   </header>
 
