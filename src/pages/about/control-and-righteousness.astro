@@ -1,0 +1,89 @@
+---
+// No Babe Art - About Page
+// Place this file in: src/pages/about/no-babe-art.astro
+
+// Import components
+import '../../styles/global.css';
+import Navigation from '../../components/navbar.astro';
+
+// Page metadata
+const pageTitle = "Control and Righteousness - Serra 2.0";
+const pageDescription = "Understanding the foundational principle behind Serra Angel and the Serra 2.0 project";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content={pageDescription}>
+  <title>{pageTitle}</title>
+</head>
+
+<body>
+  <!-- Import Navigation Component -->
+  <Navigation currentPage="about" />
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <h1>Control and Righteousness</h1>
+    <p>The Foundational Principle Behind Serra Angel</p>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <article class="about-article">
+      
+      <section class="article-section">
+        <p>
+          At the first Magic: The Gathering World Championship in 1994, Serra Angel was the win condition. 
+          More than just a powerful card, she became an implicit reference for what it means to “control a game and play with righteousness.” 
+        </p>
+      </section>
+
+      <section class="article-section">
+        <p>
+          The principle behind Zak Dolan's Angel Stasis deck—used by the first MTG World Champion—was to lock down the opponent's game, preventing them from untapping their lands and creatures. 
+          Once the game was frozen, victory was secured inexorably through four copies of Serra Angel. 
+          Zak Dolan understood that mastering tempo and resource management mattered more than simply playing the most powerful cards available. 
+          Serra Angel thus asserted herself as a clear and deliberate win condition. 
+          Patience, defense, and time management took precedence over surprise or excess.
+        </p>
+      </section>
+
+      <section class="article-section">
+        <p>
+          Her iconic ability—attacking without tapping, which would later become the static ability Vigilance—creates strong coherence between mechanics and symbolism. 
+          The Angel acts without ever abandoning her protective role. She attacks without exposing herself, dominates without brutality. 
+          This constant vigilance became, for many players, an expression of in-game righteousness: a victory achieved without trickery, without complexity, without sudden imbalance. 
+          The card openly declares its power, allows time to respond, and conceals none of its intent. 
+          Serra Angel is a simple card; I believe it is the only card to appear every year in regular sets since the game's inception. 
+        </p>
+      </section>
+
+      <section class="article-section">
+        <p>
+          In 1996, Serra Angel was used on the Pro Tour in a Selesnya (white-green) deck by Bertrand Lestree. 
+          The strategy involved summoning either Erhnam Djinn or Serra Angel and then, on the following turn, destroying all lands with Armageddon, hence the name of the archetype, ErhnamGeddon. 
+          This is why you will find a reference to Armageddon in Michele Braschi's work. That same year, Eric Tam used Serra Angel in a Naya (white-red-green) deck. 
+          Both decks contained only a single copy of Serra Angel, clearly showing that as early as 1996 the card was neither overpowered nor indispensable in competitive play. 
+          Its power would continue to diminish over time, even though it was reprinted as recently as 2025 in the Foundations set
+        </p>
+      </section>
+
+      <section class="article-section">
+        <p>
+          Rarely in the history of Magic has a card embodied such a precise alignment between illustration, symbolism, and mechanics. 
+          A calm figure, an embodiment of power, a constant presence on the battlefield, Serra Angel became the symbol of a friendly, accessible Magic—a game played with simplicity and clarity.
+        </p>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Serra 2.0 Project. All rights reserved.</p>
+  </footer>
+</body>
+</html>
