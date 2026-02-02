@@ -1,0 +1,92 @@
+---
+// Our Team - About Page
+// Place this file in: src/pages/about/team.astro
+
+// Import components
+import '../../styles/global.css';
+import Navigation from '../../components/navbar.astro';
+import TeamMember from '../../components/teammember.astro';
+
+// Page metadata
+const pageTitle = "Our Team - Serra 2.0";
+const pageDescription = "Meet the team behind the Serra 2.0 project";
+
+// Base URL for GitHub Pages
+const baseUrl = '/serra2';
+
+// Team members data - Easy to maintain
+// To add a new team member: add an object here with name, role, photo, and bio
+const teamMembers = [
+  {
+    name: "DrChoc",
+    role: "Project Director",
+    photo: `${baseUrl}/team/DrChoc.jpg`,
+    bio: "Dr Choc discovered Magic: The Gathering almost by accident. In 1994, while looking for an alternative to tarot to fill long overnight shifts with colleagues, a store clerk recommended this new game, even though he barely understood its mechanics himself. Fortunately, the starter decks included a small — if somewhat complex — rulebook to help them learn. In 2019, during the global health crisis, he found himself confined at home, sitting through long remote meetings. He took this opportunity to dust off his drawing tools and began altering cards, guided by the valuable advice of KevinAltered. Contact: DrChoc_MTG on Instagram"
+  },
+  {
+    name: "Kevin 'Altered' Lepage",
+    role: "Curator",
+    photo: `${baseUrl}/team/Kevin.jpg`,
+    bio: "Kevin Altered Lepage discovered Magic: The Gathering in its early days, back in the 90s. He played, collected a little, and then moved into card alteration in 2009. This new involvement in the world of Magic gradually distanced him from competitive play. Quickly, wanting to develop his own style, he specialized in foil cards, developing foil peeling techniques. He continues to play whenever possible in non-competitive multiplayer formats, as he primarily wants to enjoy the connections and camaraderie among players. Contact: kevin_altered_mtg on Instagram"
+  },
+  {
+    name: "Ugo 'Okha' Huel",
+    role: "Web Manager",
+    photo: `${baseUrl}/team/frog.jpg`,
+    bio: "Ugo Huel started his journey with Magic: The Gathering back in 2008 with the release of the set 'Shards of Alara'. Being only 8 at the time, he only attended sealed and draft events, but this game sparked a fire inside him. Since then, he played multiple card game, from Magic: The Gathering to the newly released Riftbound with the same passion that burned ever since."
+  }
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content={pageDescription}>
+  <title>{pageTitle}</title>
+</head>
+
+<body>
+  <!-- Import Navigation Component -->
+  <Navigation currentPage="about" />
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <h1>Our Team</h1>
+    <p>The people bringing Serra 2.0 to life</p>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    
+    <!-- Introduction Section -->
+    <section class="team-intro">
+      <p>
+        The Serra 2.0 project is the result of passionate collaboration between individuals who share 
+        a deep appreciation for Magic: The Gathering's artistic legacy and a commitment to celebrating 
+        it through contemporary art. Meet the team that made this exhibition possible.
+      </p>
+    </section>
+
+    <!-- Team Members Section -->
+    <section class="team-members">
+      {teamMembers.map((member, index) => (
+        <TeamMember 
+          name={member.name}
+          role={member.role}
+          photo={member.photo}
+          bio={member.bio}
+          reversed={index % 2 !== 0}
+        />
+      ))}
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Serra 2.0 Project. All rights reserved.</p>
+  </footer>
+</body>
+</html>
