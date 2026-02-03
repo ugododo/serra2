@@ -1,0 +1,65 @@
+---
+// No Babe Art - About Page
+// Place this file in: src/pages/about/no-babe-art.astro
+
+// Import components
+import '../../styles/global.css';
+import Navigation from '../../components/navbar.astro';
+
+// Base URL for GitHub Pages
+const baseUrl = '/serra2';
+
+// Page metadata
+const pageTitle = "An Iberian missprint - Serra 2.0";
+const pageDescription = "Understanding the foundational principle behind Serra Angel and the Serra 2.0 project";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content={pageDescription}>
+  <title>{pageTitle}</title>
+</head>
+
+<body>
+  <!-- Import Navigation Component -->
+  <Navigation currentPage="about" />
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <h1>An Iberian missprint</h1>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <article class="about-article">
+      
+      <section class="article-section">
+        <p>
+          This printing error of <b>Serra Angel</b> comes from the black-bordered Fourth Edition, released in Spain in 1995. 
+          The Angel's illustration was replaced with that of Time Elemental, illustrated by Amy Weber. 
+          It is considered one of the most famous printing errors in the history of Magic. 
+        </p>
+      </section>
+
+      <div class="article-image2">
+        <img src=`${baseUrl}/articles/serra-angel-missprint.jpg` alt="Serra Angel missprint from the Spanish version of Fourth Edition">
+      </div>
+
+      <section class="article-section">
+        <p>
+          Here, the misprint becomes a work in its own right, a fragment of history and fantasy, carrying the powerful aesthetic of error. 
+        </p>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Serra 2.0 Project. All rights reserved.</p>
+  </footer>
+</body>
+</html>
