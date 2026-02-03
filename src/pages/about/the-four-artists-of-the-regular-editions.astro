@@ -1,0 +1,82 @@
+---
+// No Babe Art - About Page
+// Place this file in: src/pages/about/no-babe-art.astro
+
+// Import components
+import '../../styles/global.css';
+import Navigation from '../../components/navbar.astro';
+
+// Base URL for GitHub Pages
+const baseUrl = '/serra2';
+
+// Page metadata
+const pageTitle = "The four artists of the regular editions - Serra 2.0";
+const pageDescription = "Understanding the foundational principle behind Serra Angel and the Serra 2.0 project";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content={pageDescription}>
+  <title>{pageTitle}</title>
+</head>
+
+<body>
+  <!-- Import Navigation Component -->
+  <Navigation currentPage="about" />
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <h1>The four artists of the regular editions</h1>
+    <p>The Foundational Principle Behind Serra Angel</p>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <article class="about-article">
+      
+      <section class="article-section">
+        <p>
+          And Richard Garfield created Serra! Serra is the Latin word for talons, like those of an eagle, but also for a saw. 
+          He wanted the angels of Magic: The Gathering to be representations of strength and power, wielding “serrated” swords. 
+          Douglas Schuler, the first artist to depict Serra Angel, was not aware of this etymological reference, but he clearly understood the solemn power Richard Garfield was seeking. 
+          His illustration draws from medieval and religious iconography typical of 1990s fantasy art. 
+          It immediately establishes the Angel as a figure of righteousness, vigilance, and moral stability.
+        </p>
+      </section>
+
+      <section class="article-section">
+        <p>
+          According to cardmarket, there are 59 versions of Serra Angel, but only three other artists have worked on regular-edition printings: 
+          <b>Mark Zug</b> (2001-2004), <b>Greg Staples</b> (2005-2014 then 2025 for Fondations) and <b>Donato Giancola</b> (2018-2023).
+        </p>
+      </section>
+
+      <div class="article-image1">
+        <img src=`${baseUrl}/articles/the-four-artists-of-the-regular-editions.jpg` alt="Three images of the Angel throughout history">
+      </div>
+
+      <section class="article-section">
+        <p>
+          The depiction of Serra Angel over nearly thirty years clearly reflects the graphic evolution of Magic cards. 
+          <b>Douglas Schuler</b> defines a luminous figure, dominated by whites and golds, which becomes the very image of white. 
+          This is a simple, traditional treatment—what might be called “old school,” like the cards from the earliest sets. 
+          <b>Mark Zug</b> retains the bright, celestial palette while rendering the Angel more realistically, moving away from a purely divine character. 
+          Greg Staples significantly reduces the scale of the Angel in order to heighten the drama of this warrior angel. 
+          The sky shifts to a black-and-white palette, featuring strong contrasts and striking light. 
+          <b>Donato Giancola</b> preserves the proportions established by Greg Staples but places the Angel within a more dynamic scene, viewed from above, against a colorful background of “war colors.” 
+          A city appears below, as if the Angel were falling, sword pointed downward—an image that echoes the card's diminished place in competitive Magic.
+        </p>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Serra 2.0 Project. All rights reserved.</p>
+  </footer>
+</body>
+</html>
