@@ -1,8 +1,4 @@
 ---
-// Individual Artist Detail Page
-// Create one file for each artist in: src/pages/artists/[artist-slug].astro
-// Example: src/pages/artists/artist-name-1.astro
-
 // Import components
 import '../../styles/global.css';
 import Navigation from '../../components/navbar.astro';
@@ -10,31 +6,25 @@ import Navigation from '../../components/navbar.astro';
 // Base URL for GitHub Pages
 const baseUrl = '/serra2';
 
-// Artist data - Update this for each artist
+// Artist data
 const artist = {
   name: "Aleix Escura Bello",
   photo: `${baseUrl}/artists-artworks/Escura.jpg`,
   bio: "Aleix Escura Bello is an emerging Spanish artist, known for his use of ink and strong contrasts, combined with vibrant splashes of color. A tattoo artist, illustrator, and professional photographer for 11 years, he began creating works inspired by one of his greatest passions: Magic: The Gathering. For the Serra2.0Angel exhibition, he chose to depict a group of three angels. He also provided a preparatory drawing of his first Playmate, which depicted... an angel. Contact: Aleixescurabello on Instagram ",
   artworks: [
     {
-      title: "",
+      title: "test",
       image: `${baseUrl}/artists-artworks/EscuraCard.jpg`,
-      description: ""
+      description: "test"
     },
     {
       title: "Artwork Title 2",
       image: `${baseUrl}/artists-artworks/EscuraFramed.jpg`,
       description: "A detailed description of this artwork, the concept behind it, and what makes it special."
     },
-    {
-      title: "Artwork Title 3",
-      image: "",
-      description: "A detailed description of this artwork, the concept behind it, and what makes it special."
-    }
   ]
 };
 
-// Page metadata
 const pageTitle = `${artist.name} - Serra 2.0`;
 const pageDescription = `Explore ${artist.name}'s artworks for the Serra 2.0 project`;
 ---
@@ -49,10 +39,8 @@ const pageDescription = `Explore ${artist.name}'s artworks for the Serra 2.0 pro
 </head>
 
 <body>
-  <!-- Import Navigation Component -->
   <Navigation currentPage="artists" />
 
-  <!-- Artist Header with Photo -->
   <header class="artist-detail-header">
     <div class="container">
       <a href={`${baseUrl}/artists`} class="back-link">← Back to Artists</a>
@@ -68,27 +56,112 @@ const pageDescription = `Explore ${artist.name}'s artworks for the Serra 2.0 pro
     </div>
   </header>
 
-  <!-- Artworks Section -->
   <main class="container">
     <h2 class="section-title">Artworks</h2>
     <div class="artist-detail-artworks-grid">
-      {artist.artworks.map((artwork) => (
-        <div class="artist-detail-artwork-card">
-          <div class="artist-detail-artwork-image">
-            <img src={artwork.image} alt={artwork.title} />
+      {artist.artworks.map((artwork) => {
+        const hasTitle = artwork.title && artwork.title.trim() !== '';
+        const hasDescription = artwork.description && artwork.description.trim() !== '';
+        const hasInfo = hasTitle || hasDescription;
+        const hasImage = artwork.image && artwork.image.trim() !== '';
+
+        return (
+          <div class="artist-detail-artwork-card">
+            {hasImage && (
+              // CHANGE 1: We removed the `onclick` and added `data-*` attributes.
+              // We also add a specific class `js-lightbox-trigger` to make it easy to select in JS.
+              <div 
+                class="artist-detail-artwork-image js-lightbox-trigger"
+                data-lightbox-src={artwork.image}
+                data-lightbox-caption={artwork.title || 'Artwork'}
+              >
+                <img src={artwork.image} alt={artwork.title || 'Artwork'} />
+                <div class="zoom-overlay"></div>
+              </div>
+            )}
+            {hasInfo && (
+              <div class="artist-detail-artwork-info">
+                {hasTitle && <h3 class="artist-detail-artwork-title">{artwork.title}</h3>}
+                {hasDescription && <p class="artist-detail-artwork-description">{artwork.description}</p>}
+              </div>
+            )}
           </div>
-          <div class="artist-detail-artwork-info">
-            <h3 class="artist-detail-artwork-title">{artwork.title}</h3>
-            <p class="artist-detail-artwork-description">{artwork.description}</p>
-          </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   </main>
 
-  <!-- Footer -->
+  <!-- Lightbox Modal -->
+  <!-- CHANGE 2: Removed the onclick="closeLightbox()" from the modal itself -->
+  <div id="lightbox" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-image" alt="">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
   <footer>
     <p>&copy; 2026 Serra 2.0 Project. All rights reserved.</p>
   </footer>
+
+  <!-- CHANGE 3: The entire script is updated to use event listeners -->
+  <script>
+    // Get all the DOM elements we need to work with
+    const lightbox = document.getElementById('lightbox') as HTMLElement;
+    const lightboxImg = document.getElementById('lightbox-image') as HTMLImageElement;
+    const lightboxCaption = document.getElementById('lightbox-caption') as HTMLElement;
+    const lightboxTriggers = document.querySelectorAll('.js-lightbox-trigger');
+
+    // Function to open the lightbox
+    function openLightbox(imageSrc: string, caption: string) {
+      if (!lightbox || !lightboxImg || !lightboxCaption) return;
+
+      lightbox.style.display = 'flex';
+      lightboxImg.src = imageSrc;
+      lightboxCaption.textContent = caption;
+      document.body.style.overflow = 'hidden'; // Prevent scrolling
+    }
+
+    // Function to close the lightbox
+    function closeLightbox() {
+      if (!lightbox) return;
+
+      lightbox.style.display = 'none';
+      document.body.style.overflow = 'auto'; // Re-enable scrolling
+    }
+
+    // --- Event Listeners ---
+
+    // 1. Add a click event to each artwork image
+    lightboxTriggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const imageSrc = (trigger as HTMLElement).dataset.lightboxSrc;
+        const caption = (trigger as HTMLElement).dataset.lightboxCaption;
+        if (imageSrc) {
+          openLightbox(imageSrc, caption || '');
+        }
+      });
+    });
+    
+    // 2. Add a click event to the lightbox background to close it
+    if (lightbox) {
+      lightbox.addEventListener('click', () => {
+        closeLightbox();
+      });
+    }
+
+    // 3. Prevent lightbox from closing when clicking on the image itself
+    if (lightboxImg) {
+      lightboxImg.addEventListener('click', (e: MouseEvent) => {
+        e.stopPropagation(); // Stop the click from bubbling up to the lightbox background
+      });
+    }
+
+    // 4. Close lightbox with the Escape key
+    document.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    });
+  </script>
 </body>
 </html>
