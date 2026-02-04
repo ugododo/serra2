@@ -16,29 +16,17 @@ const pageDescription = "Join the Serra 2.0 project - Access participation guide
 // Make sure your Google Drive links are set to "Anyone with the link can view"
 const documents = [
   {
-    title: "Participation Guidelines",
-    description: "Complete guidelines for artists interested in joining the Serra 2.0 project, including theme details and requirements.",
-    icon: "📋",
-    link: "https://drive.google.com/" // Replace with your Google Drive link
-  },
-  {
     title: "Application Form",
-    description: "Download and complete this form to submit your application to participate in the project.",
+    description: "Download and complete this form and submit your application to serra2.0project@gmail.com to participate in the project.",
     icon: "📝",
-    link: "https://drive.google.com/" // Replace with your Google Drive link
+    link: "https://drive.google.com/drive/folders/1eT5Avk2exsaB8E3R22WcPU5LQzH-sTu4"
   },
   {
-    title: "Technical Specifications",
-    description: "Artwork specifications, file formats, dimensions, and submission requirements.",
-    icon: "🎨",
-    link: "https://drive.google.com" // Replace with your Google Drive link
-  },
-  {
-    title: "Terms & Conditions",
-    description: "Legal terms, copyright agreements, and conditions for participating artists.",
+    title: "Need more informations ?",
+    description: "Feel free to check this google drive folder !",
     icon: "📄",
-    link: "https://drive.google.com/" // Replace with your Google Drive link
-  }
+    link: "https://drive.google.com/drive/folders/1eT5Avk2exsaB8E3R22WcPU5LQzH-sTu4"
+  },
 ];
 ---
 
@@ -80,7 +68,7 @@ const documents = [
 
     <!-- Documents Grid -->
     <section class="participate-documents">
-      <h2 class="section-title">Required Documents</h2>
+      <h2 class="section-title">Documents</h2>
       <div class="documents-grid">
         {documents.map((doc) => (
           <a href={doc.link} target="_blank" rel="noopener noreferrer" class="document-card">
@@ -93,14 +81,24 @@ const documents = [
       </div>
     </section>
 
-    <!-- Call to Action -->
     <section class="participate-cta">
+      <h2>Host a Serra 2.0 Exhibition</h2>
+      <p>
+        If you're interested in hosting Serra 2.0 at your venue or event, we'd love to hear from you. 
+        Please contact us to discuss availability, logistics, and how we can work together to bring this extraordinary collection to your audience.
+      </p>
+      <p>
+        Together, we can offer art enthusiasts and Magic fans alike a fresh perspective on one of the game's most enduring icons.
+      </p>
+    </section>
+
+    <!-- <section class="participate-cta">
       <h2>Ready to Apply?</h2>
       <p>
         Once you've reviewed all the documents, complete the application form and submit your portfolio. 
         We look forward to seeing your creative interpretation of Serra Angel!
       </p>
-    </section>
+    </section> -->
 
   </main>
 
