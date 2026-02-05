@@ -286,6 +286,13 @@
       visibility: visible;
     }
 
+    .nav-buttons .nav-btn,
+    .dropdown-toggle {
+      text-align: center;
+      width: 100%;
+      justify-content: center;
+    }
+
     .dropdown-menu.show {
       max-height: 500px;
       padding: 0.5rem 0;
@@ -1198,8 +1205,9 @@
 }
 
 .artist-detail-artworks-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
 }
 
@@ -1208,6 +1216,8 @@
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  width: 300px; 
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -1217,7 +1227,7 @@
   position: relative;
   cursor: pointer;
   overflow: hidden;
-  flex-grow: 1; 
+  aspect-ratio: 3 / 4;
 }
 
 .artist-detail-artwork-image img {
