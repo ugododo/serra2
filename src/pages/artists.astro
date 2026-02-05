@@ -1,10 +1,7 @@
 ---
 // Artists Overview Page
 // Displays all artists as compact cards that link to individual pages
-// Place this file in: src/pages/artists.astro
-// Styles are in src/styles/global.css
 
-// Import components
 import '../styles/global.css';
 import Navigation from '../components/navbar.astro';
 import ArtistCard from '../components/artist_card.astro';
@@ -16,7 +13,6 @@ const pageDescription = "Meet the talented artists behind the Serra 2.0 project"
 // Base URL for GitHub Pages
 const baseUrl = '/serra2';
 
-// Artists data - Easy to maintain
 // To add a new artist: add an object here with name, photo, and slug
 // The slug should be URL-friendly (lowercase, hyphens instead of spaces)
 const artists = [
@@ -87,16 +83,13 @@ const artists = [
 </head>
 
 <body>
-  <!-- Import Navigation Component -->
   <Navigation currentPage="artists" />
 
-  <!-- Page Header -->
   <header class="page-header">
     <h1>Featured Artists</h1>
     <p>Click on an artist to explore their work and learn more about their creative vision</p>
   </header>
 
-  <!-- Main Content - Artists Grid -->
   <main class="container">
     <div class="artists-compact-grid">
       {artists.map((artist) => (
@@ -109,7 +102,6 @@ const artists = [
     </div>
   </main>
 
-  <!-- Footer -->
   <footer>
     <p>&copy; 2026 Serra 2.0 Project. All rights reserved.</p>
   </footer>

@@ -1,8 +1,6 @@
 ---
 // Serra 2.0 Landing Page
-// Main landing page for the art project inspired by Serra Angel from Magic the Gathering
 
-// Import the reusable Navigation component and global styles
 import '../styles/global.css';
 import Navigation from '../components/navbar.astro';
 
@@ -20,10 +18,8 @@ const pageDescription = "An art project celebrating Serra Angel through contempo
   <title>{pageTitle}</title>
 </head>
 <body>
-  <!-- Import Navigation Component -->
   <Navigation currentPage="home" />
 
-  <!-- Hero Section - Main introduction to the project -->
   <section class="hero" id="home">
     <div class="hero-content">
       <h1>Serra 2.0</h1>
@@ -31,7 +27,6 @@ const pageDescription = "An art project celebrating Serra Angel through contempo
     </div>
   </section>
 
-  <!-- About Section - Project description -->
   <section class="about" id="about">
     <div class="container">
       <h2 class="section-title">About the Project</h2>
@@ -68,7 +63,6 @@ const pageDescription = "An art project celebrating Serra Angel through contempo
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <p>&copy; 2026 Serra 2.0 Project. All rights reserved.</p>
   </footer>

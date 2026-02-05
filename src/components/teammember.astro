@@ -1,14 +1,13 @@
 ---
 // Team Member Component
 // Reusable component for displaying team members
-// Place this file in: src/components/TeamMember.astro
 
 interface Props {
   name: string;
   role: string;
   photo: string;
   bio: string;
-  reversed?: boolean; // Alternates photo position for visual variety
+  reversed?: boolean;
 }
 
 const { name, role, photo, bio, reversed = false } = Astro.props;

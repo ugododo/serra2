@@ -2,10 +2,7 @@
 // Expositions Page
 // Displays all upcoming and past exhibitions/representations of the Serra 2.0 project
 
-// Import the global stylesheet
 import '../styles/global.css';
-
-// Import the reusable Navigation component
 import Navigation from '../components/navbar.astro';
 
 // Page metadata
@@ -59,16 +56,13 @@ const pastExpositions = expositions.filter(exp => exp.status === 'past');
 </head>
 
 <body>
-  <!-- Import Navigation Component -->
   <Navigation currentPage="expositions" />
 
-  <!-- Page Header -->
   <header class="page-header">
     <h1>Expositions</h1>
     <p>Discover where you can experience the Serra 2.0 art project in person</p>
   </header>
 
-  <!-- Main Content -->
   <main class="container">
     
     <!-- Ongoing Expositions -->
@@ -106,7 +100,6 @@ const pastExpositions = expositions.filter(exp => exp.status === 'past');
       </section>
     )}
 
-    <!-- Upcoming Expositions -->
     {upcomingExpositions.length > 0 && (
       <section class="expo-section">
         <h2 class="section-title">Upcoming Expositions</h2>
@@ -141,7 +134,6 @@ const pastExpositions = expositions.filter(exp => exp.status === 'past');
       </section>
     )}
 
-    <!-- Past Expositions -->
     {pastExpositions.length > 0 && (
       <section class="expo-section">
         <h2 class="section-title">Past Expositions</h2>
@@ -176,7 +168,6 @@ const pastExpositions = expositions.filter(exp => exp.status === 'past');
       </section>
     )}
 
-    <!-- Empty state - if no expositions exist -->
     {expositions.length === 0 && (
       <div class="empty-message">
         <p>No expositions scheduled at the moment. Check back soon!</p>
@@ -185,7 +176,6 @@ const pastExpositions = expositions.filter(exp => exp.status === 'past');
 
   </main>
 
-  <!-- Footer -->
   <footer style="background: #2c3e50; color: white; text-align: center; padding: 2rem;">
     <p>&copy; 2026 Serra 2.0 Project. All rights reserved.</p>
   </footer>

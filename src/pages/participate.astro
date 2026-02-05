@@ -1,9 +1,4 @@
 ---
-// Participate Page
-// Page for artists to access participation documents and guidelines
-// Place this file in: src/pages/participate.astro
-
-// Import components
 import '../styles/global.css';
 import Navigation from '../components/navbar.astro';
 
@@ -11,9 +6,8 @@ import Navigation from '../components/navbar.astro';
 const pageTitle = "Participate - Serra 2.0";
 const pageDescription = "Join the Serra 2.0 project - Access participation guidelines and application forms";
 
-// Documents data - Easy to maintain
 // To add a new document: add an object here with title, description, and Google Drive link
-// Make sure your Google Drive links are set to "Anyone with the link can view"
+// Make sure Google Drive links are set to "Anyone with the link can view"
 const documents = [
   {
     title: "Application Form",
@@ -40,19 +34,15 @@ const documents = [
 </head>
 
 <body>
-  <!-- Import Navigation Component -->
   <Navigation currentPage="participate" />
 
-  <!-- Page Header -->
   <header class="page-header">
     <h1>Participate in Serra 2.0</h1>
     <p>Join us in reimagining the iconic Serra Angel. Download the documents below to get started.</p>
   </header>
 
-  <!-- Main Content -->
   <main class="container">
     
-    <!-- Introduction Section -->
     <section class="participate-intro">
       <h2>We're Looking for Artists!</h2>
       <p>
@@ -66,7 +56,6 @@ const documents = [
       </p>
     </section>
 
-    <!-- Documents Grid -->
     <section class="participate-documents">
       <h2 class="section-title">Documents</h2>
       <div class="documents-grid">
@@ -91,18 +80,8 @@ const documents = [
         Together, we can offer art enthusiasts and Magic fans alike a fresh perspective on one of the game's most enduring icons.
       </p>
     </section>
-
-    <!-- <section class="participate-cta">
-      <h2>Ready to Apply?</h2>
-      <p>
-        Once you've reviewed all the documents, complete the application form and submit your portfolio. 
-        We look forward to seeing your creative interpretation of Serra Angel!
-      </p>
-    </section> -->
-
   </main>
 
-  <!-- Footer -->
   <footer>
     <p>&copy; 2026 Serra 2.0 Project. All rights reserved.</p>
   </footer>
