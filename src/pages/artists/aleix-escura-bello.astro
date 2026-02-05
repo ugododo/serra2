@@ -1,5 +1,4 @@
 ---
-// Import components
 import '../../styles/global.css';
 import Navigation from '../../components/navbar.astro';
 
@@ -13,15 +12,21 @@ const artist = {
   bio: "Aleix Escura Bello is an emerging Spanish artist, known for his use of ink and strong contrasts, combined with vibrant splashes of color. A tattoo artist, illustrator, and professional photographer for 11 years, he began creating works inspired by one of his greatest passions: Magic: The Gathering. For the Serra2.0Angel exhibition, he chose to depict a group of three angels. He also provided a preparatory drawing of his first Playmate, which depicted... an angel. Contact: Aleixescurabello on Instagram ",
   artworks: [
     {
-      title: "test",
+      title: "Serra's Emissaries",
       image: `${baseUrl}/artists-artworks/EscuraCard.jpg`,
-      description: "test"
+      description: "Ink and digital color on paper."
     },
     {
-      title: "Artwork Title 2",
+      title: "The Guardian",
       image: `${baseUrl}/artists-artworks/EscuraFramed.jpg`,
-      description: "A detailed description of this artwork, the concept behind it, and what makes it special."
+      description: "Framed piece as displayed in the exhibition."
     },
+    {
+      // THIS IS THE TEST CASE FOR THE WHITESPACE FIX
+      title: "",
+      image: `${baseUrl}/artists-artworks/EscuraCard.jpg`,
+      description: ""
+    }
   ]
 };
 
@@ -68,8 +73,6 @@ const pageDescription = `Explore ${artist.name}'s artworks for the Serra 2.0 pro
         return (
           <div class="artist-detail-artwork-card">
             {hasImage && (
-              // CHANGE 1: We removed the `onclick` and added `data-*` attributes.
-              // We also add a specific class `js-lightbox-trigger` to make it easy to select in JS.
               <div 
                 class="artist-detail-artwork-image js-lightbox-trigger"
                 data-lightbox-src={artwork.image}
@@ -92,7 +95,6 @@ const pageDescription = `Explore ${artist.name}'s artworks for the Serra 2.0 pro
   </main>
 
   <!-- Lightbox Modal -->
-  <!-- CHANGE 2: Removed the onclick="closeLightbox()" from the modal itself -->
   <div id="lightbox" class="lightbox">
     <span class="lightbox-close">&times;</span>
     <img class="lightbox-content" id="lightbox-image" alt="">
@@ -103,35 +105,26 @@ const pageDescription = `Explore ${artist.name}'s artworks for the Serra 2.0 pro
     <p>&copy; 2026 Serra 2.0 Project. All rights reserved.</p>
   </footer>
 
-  <!-- CHANGE 3: The entire script is updated to use event listeners -->
   <script>
-    // Get all the DOM elements we need to work with
     const lightbox = document.getElementById('lightbox') as HTMLElement;
     const lightboxImg = document.getElementById('lightbox-image') as HTMLImageElement;
     const lightboxCaption = document.getElementById('lightbox-caption') as HTMLElement;
     const lightboxTriggers = document.querySelectorAll('.js-lightbox-trigger');
 
-    // Function to open the lightbox
     function openLightbox(imageSrc: string, caption: string) {
       if (!lightbox || !lightboxImg || !lightboxCaption) return;
-
       lightbox.style.display = 'flex';
       lightboxImg.src = imageSrc;
       lightboxCaption.textContent = caption;
-      document.body.style.overflow = 'hidden'; // Prevent scrolling
+      document.body.style.overflow = 'hidden';
     }
 
-    // Function to close the lightbox
     function closeLightbox() {
       if (!lightbox) return;
-
       lightbox.style.display = 'none';
-      document.body.style.overflow = 'auto'; // Re-enable scrolling
+      document.body.style.overflow = 'auto';
     }
 
-    // --- Event Listeners ---
-
-    // 1. Add a click event to each artwork image
     lightboxTriggers.forEach(trigger => {
       trigger.addEventListener('click', () => {
         const imageSrc = (trigger as HTMLElement).dataset.lightboxSrc;
@@ -142,21 +135,18 @@ const pageDescription = `Explore ${artist.name}'s artworks for the Serra 2.0 pro
       });
     });
     
-    // 2. Add a click event to the lightbox background to close it
     if (lightbox) {
       lightbox.addEventListener('click', () => {
         closeLightbox();
       });
     }
 
-    // 3. Prevent lightbox from closing when clicking on the image itself
     if (lightboxImg) {
       lightboxImg.addEventListener('click', (e: MouseEvent) => {
-        e.stopPropagation(); // Stop the click from bubbling up to the lightbox background
+        e.stopPropagation();
       });
     }
 
-    // 4. Close lightbox with the Escape key
     document.addEventListener('keydown', (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         closeLightbox();

@@ -1,16 +1,12 @@
 ---
-// Individual Artist Detail Page
-// Create one file for each artist in: src/pages/artists/[artist-slug].astro
-// Example: src/pages/artists/artist-name-1.astro
 
-// Import components
 import '../../styles/global.css';
 import Navigation from '../../components/navbar.astro';
 
 // Base URL for GitHub Pages
 const baseUrl = '/serra2';
 
-// Artist data - Update this for each artist
+// Artist data
 const artist = {
   name: "Michele Braschi",
   photo: `${baseUrl}/artists-artworks/Braschi.jpg`,
@@ -106,33 +102,25 @@ const pageDescription = `Explore ${artist.name}'s artworks for the Serra 2.0 pro
   </footer>
 
   <script>
-    // Get all the DOM elements we need to work with
     const lightbox = document.getElementById('lightbox') as HTMLElement;
     const lightboxImg = document.getElementById('lightbox-image') as HTMLImageElement;
     const lightboxCaption = document.getElementById('lightbox-caption') as HTMLElement;
     const lightboxTriggers = document.querySelectorAll('.js-lightbox-trigger');
 
-    // Function to open the lightbox
     function openLightbox(imageSrc: string, caption: string) {
       if (!lightbox || !lightboxImg || !lightboxCaption) return;
-
       lightbox.style.display = 'flex';
       lightboxImg.src = imageSrc;
       lightboxCaption.textContent = caption;
-      document.body.style.overflow = 'hidden'; // Prevent scrolling
+      document.body.style.overflow = 'hidden';
     }
 
-    // Function to close the lightbox
     function closeLightbox() {
       if (!lightbox) return;
-
       lightbox.style.display = 'none';
-      document.body.style.overflow = 'auto'; // Re-enable scrolling
+      document.body.style.overflow = 'auto';
     }
 
-    // --- Event Listeners ---
-
-    // 1. Add a click event to each artwork image
     lightboxTriggers.forEach(trigger => {
       trigger.addEventListener('click', () => {
         const imageSrc = (trigger as HTMLElement).dataset.lightboxSrc;
@@ -143,21 +131,18 @@ const pageDescription = `Explore ${artist.name}'s artworks for the Serra 2.0 pro
       });
     });
     
-    // 2. Add a click event to the lightbox background to close it
     if (lightbox) {
       lightbox.addEventListener('click', () => {
         closeLightbox();
       });
     }
 
-    // 3. Prevent lightbox from closing when clicking on the image itself
     if (lightboxImg) {
       lightboxImg.addEventListener('click', (e: MouseEvent) => {
-        e.stopPropagation(); // Stop the click from bubbling up to the lightbox background
+        e.stopPropagation();
       });
     }
 
-    // 4. Close lightbox with the Escape key
     document.addEventListener('keydown', (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         closeLightbox();

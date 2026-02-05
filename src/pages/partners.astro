@@ -1,11 +1,6 @@
 ---
-// Partners Page
-// Displays all partners and sponsors of the Serra 2.0 project
-
-// Import the global stylesheet
 import '../styles/global.css';
 
-// Import the reusable Navigation component
 import Navigation from '../components/navbar.astro';
 
 // Page metadata
@@ -15,7 +10,6 @@ const pageDescription = "Our valued partners and sponsors supporting the Serra 2
 // Base URL for GitHub Pages
 const baseUrl = '/serra2';
 
-// Partners data - Easy to maintain array
 // Simply add new objects to this array to add new partners
 // Logo images should be placed in the /public/partners/ folder
 // category is gallery, sponsor, media or supporter
@@ -28,7 +22,6 @@ const partners = [
   }
 ];
 
-// Separate partners by category
 const galleries = partners.filter(p => p.category === 'gallery');
 const sponsors = partners.filter(p => p.category === 'sponsor');
 const mediaPartners = partners.filter(p => p.category === 'media');
@@ -45,19 +38,14 @@ const supporters = partners.filter(p => p.category === 'supporter');
 </head>
 
 <body>
-  <!-- Import Navigation Component -->
   <Navigation currentPage="partners" />
 
-  <!-- Page Header -->
   <header class="page-header">
     <h1>Our Partners</h1>
     <p>We're grateful to work with these amazing organizations that support the Serra 2.0 project</p>
   </header>
 
-  <!-- Main Content -->
   <main class="container">
-    
-    <!-- Gallery Partners -->
     {galleries.length > 0 && (
       <section class="partner-section">
         <h2 class="section-title">Gallery Partners</h2>
@@ -65,13 +53,10 @@ const supporters = partners.filter(p => p.category === 'supporter');
           {galleries.map((partner) => (
             <a href={partner.website} target="_blank" rel="noopener noreferrer" class="partner-card">
               <div class="partner-logo">
-                <!-- Replace placeholder with actual logo when available -->
                 <div class="partner-logo">
                   {partner.name.split(' ').map(word => word[0]).join('')}
                 </div>
-                <!-- Uncomment when logos are available:
                 <img src={partner.logo} alt={partner.name} />
-                -->
               </div>
               <h3 class="partner-name">{partner.name}</h3>
               <span class="partner-link">Visit Website →</span>
@@ -81,7 +66,6 @@ const supporters = partners.filter(p => p.category === 'supporter');
       </section>
     )}
 
-    <!-- Sponsors -->
     {sponsors.length > 0 && (
       <section class="partner-section">
         <h2 class="section-title">Sponsors</h2>
@@ -101,7 +85,6 @@ const supporters = partners.filter(p => p.category === 'supporter');
       </section>
     )}
 
-    <!-- Media Partners -->
     {mediaPartners.length > 0 && (
       <section class="partner-section">
         <h2 class="section-title">Media Partners</h2>
@@ -121,7 +104,6 @@ const supporters = partners.filter(p => p.category === 'supporter');
       </section>
     )}
 
-    <!-- Supporters -->
     {supporters.length > 0 && (
       <section class="partner-section">
         <h2 class="section-title">Supporters</h2>
@@ -141,14 +123,12 @@ const supporters = partners.filter(p => p.category === 'supporter');
       </section>
     )}
 
-    <!-- Empty state - if no partners exist -->
     {partners.length === 0 && (
       <div class="empty-message">
         <p>Partner information coming soon!</p>
       </div>
     )}
 
-    <!-- Thank you section -->
     {partners.length > 0 && (
       <section class="thank-you">
         <h2>Thank You</h2>
@@ -161,7 +141,6 @@ const supporters = partners.filter(p => p.category === 'supporter');
 
   </main>
 
-  <!-- Footer -->
   <footer style="background: #2c3e50; color: white; text-align: center; padding: 2rem;">
     <p>&copy; 2026 Serra 2.0 Project. All rights reserved.</p>
   </footer>

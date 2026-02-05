@@ -1,8 +1,4 @@
 ---
-// Our Team - About Page
-// Place this file in: src/pages/about/team.astro
-
-// Import components
 import '../../styles/global.css';
 import Navigation from '../../components/navbar.astro';
 import TeamMember from '../../components/teammember.astro';
@@ -14,7 +10,6 @@ const pageDescription = "Meet the team behind the Serra 2.0 project";
 // Base URL for GitHub Pages
 const baseUrl = '/serra2';
 
-// Team members data - Easy to maintain
 // To add a new team member: add an object here with name, role, photo, and bio
 const teamMembers = [
   {
@@ -48,19 +43,15 @@ const teamMembers = [
 </head>
 
 <body>
-  <!-- Import Navigation Component -->
   <Navigation currentPage="about" />
 
-  <!-- Page Header -->
   <header class="page-header">
     <h1>Our Team</h1>
     <p>The people bringing Serra 2.0 to life</p>
   </header>
 
-  <!-- Main Content -->
   <main class="container">
     
-    <!-- Introduction Section -->
     <section class="team-intro">
       <p>
         The Serra 2.0 project is the result of passionate collaboration between individuals who share 
@@ -69,7 +60,6 @@ const teamMembers = [
       </p>
     </section>
 
-    <!-- Team Members Section -->
     <section class="team-members">
       {teamMembers.map((member, index) => (
         <TeamMember 
@@ -84,7 +74,6 @@ const teamMembers = [
 
   </main>
 
-  <!-- Footer -->
   <footer>
     <p>&copy; 2026 Serra 2.0 Project. All rights reserved.</p>
   </footer>
