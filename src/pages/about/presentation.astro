@@ -1,0 +1,84 @@
+---
+import '../../styles/global.css';
+import Navigation from '../../components/navbar.astro';
+
+// Base URL for GitHub Pages
+const baseUrl = '/serra2';
+
+// Page metadata
+const pageTitle = "An Iberian missprint - Serra 2.0";
+const pageDescription = "Understanding the foundational principle behind Serra Angel and the Serra 2.0 project";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content={pageDescription}>
+  <title>{pageTitle}</title>
+</head>
+
+<body>
+  <Navigation currentPage="about" />
+
+  <header class="page-header">
+    <h1>From a Card game to an Artistic Ecosystem</h1>
+  </header>
+
+  <main class="container">
+    <article class="about-article">
+      
+      <section class="article-section">
+        <p>
+          While the game system imagined by Richard Garfield stands as a major creative achievement, its visual identity also asserted itself from the very beginning. 
+          Each card is a fragment of narrative, contributing to immersion and the construction of a shared imaginary world. 
+          Magic thus establishes itself at the crossroads of game design, art, and visual storytelling.
+        </p>
+      </section>
+
+      <section class="article-section">
+        <p>
+          The earliest editions reflect a great deal of artistic freedom. 
+          Wizards of the Coast enlisted illustrators from diverse backgrounds, working with a wide range of techniques: oil painting, watercolor, ink, and mixed media coexisted side by side. 
+          This heterogeneity of original artworks shaped an aesthetic that left a strong impression on, and captivated, the game's earliest players.
+        </p>
+      </section>
+
+      <section class="article-section">
+        <p>
+          Over time, the universes became more cohesive, the worlds more clearly identifiable, and recurring characters introduced a sense of narrative continuity. The rise of digital tools transformed creative processes without breaking away from the “old-school fantasy” heritage of the game's early years. Magic thus developed a visual language capable of unifying diverse styles while maintaining a high level of artistic ambition. Creative risk (taking remains present) whether in artistic choices or specific treatments, which is essential to the game's originality and uniqueness.
+        </p>
+      </section>
+
+      <section class="article-section">
+        <p>
+          This evolution has been accompanied by a diversification of illustration formats. Extended-art cards, alternate frames, borderless versions, Secret Lair releases, and specific graphic treatments allow images to partially break free from the traditional card frame. Illustration no longer merely accompanies the card's text; it becomes an expanded space for expression, sometimes approaching an autonomous work of art, reinforcing the game's aesthetic and collectible dimension.
+        </p>
+      </section>
+
+      <section class="article-section">
+        <p>
+          A quieter yet essential practice paved the way for a new relationship between cards and artistic creation. As early as 1993, during signings, events, or through artist proofs, official Magic artists began enriching their cards with original drawings. Sketches, visual extensions, symbolic additions—often humorous—transformed the printed object into a unique piece. These interventions, carried out by the legitimate creators of the images, implicitly validated the idea that a Magic card could become a medium for personal artistic expression.
+        </p>
+      </section>
+
+      <section class="article-section">
+        <p>
+          This tacit recognition of “enrichment” set the stage for the emergence of altered cards. Artists, primarily drawn from the player community, began transforming existing cards, extending the original illustration or offering a complete reinterpretation. Some alterations give rise to entirely new artworks based on an official support; others explore the materiality of the card itself, adding foil treatments or surface effects that do not exist in official editions. The boundary between game piece, collectible object, and artwork becomes intentionally porous.
+        </p>
+      </section>
+
+      <section class="article-section">
+        <p>
+          With this first group exhibition centered on Serra Angel, we pursue the same approach: going beyond a single alteration to create a new, collective, unique, and living work of art.
+        </p>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Serra 2.0 Project. All rights reserved.</p>
+  </footer>
+</body>
+</html>
