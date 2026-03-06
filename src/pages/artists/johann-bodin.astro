@@ -1,0 +1,157 @@
+---
+import '../../styles/global.css';
+import Navigation from '../../components/navbar.astro';
+
+// Base URL for GitHub Pages
+const baseUrl = '/serra2';
+
+// Artist data
+const artist = {
+  name: "Johann Bodin",
+  photo : `${baseUrl}/artists-artworks/Bodin.jpg`,
+  bio: "Johann Bodin developed a love of drawing and music at an early age, completing his training at the Beaux-Arts in Caen in 2001. He became a professional illustrator in 2005 under the pseudonym Yoz and has created dozens of covers for science fiction and fantasy novels for various French publishing houses. In 2007, Johann received the Art & Fact prize, awarded by professional French illustrators at Les Utopiales, a science fiction convention in Nantes. He is one of the official French artists for Magic: The Gathering, having created the visuals for nearly 300 cards. Here, he offers us his personal vision of the Angel of Serra. Contact: Johann Bodin on Facebook",
+  artworks: [
+    {
+      title: "",
+      image: `${baseUrl}/artists-artworks/BodinCard1.jpg`,
+      description: ""
+    },
+    {
+      title: "",
+      image: `${baseUrl}/artists-artworks/BodinCard2.jpg`,
+      description: ""
+    },
+    {
+      title: "",
+      image: `${baseUrl}/artists-artworks/BodinFramed.jpg`,
+      description: ""
+    },
+  ]
+};
+
+// Page metadata
+const pageTitle = `${artist.name} - Serra 2.0`;
+const pageDescription = `Explore ${artist.name}'s artworks for the Serra 2.0 project`;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content={pageDescription}>
+  <title>{pageTitle}</title>
+</head>
+
+<body>
+  <Navigation currentPage="artists" />
+
+  <header class="artist-detail-header">
+    <div class="container">
+      <a href={`${baseUrl}/artists`} class="back-link">← Back to Artists</a>
+      <div class="artist-header-content">
+        <div class="artist-header-text">
+          <h1 class="artist-detail-name">{artist.name}</h1>
+          <p class="artist-detail-bio">{artist.bio}</p>
+        </div>
+        <div class="artist-header-photo">
+          <img src={artist.photo} alt={artist.name} />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2 class="section-title">Artworks</h2>
+    <div class="artist-detail-artworks-grid">
+      {artist.artworks.map((artwork) => {
+        const hasTitle = artwork.title && artwork.title.trim() !== '';
+        const hasDescription = artwork.description && artwork.description.trim() !== '';
+        const hasInfo = hasTitle || hasDescription;
+        const hasImage = artwork.image && artwork.image.trim() !== '';
+
+        return (
+          <div class="artist-detail-artwork-card">
+            {hasImage && (
+              <div 
+                class="artist-detail-artwork-image js-lightbox-trigger"
+                data-lightbox-src={artwork.image}
+                data-lightbox-caption={artwork.title || 'Artwork'}
+              >
+                <img src={artwork.image} alt={artwork.title || 'Artwork'} />
+                <div class="zoom-overlay"></div>
+              </div>
+            )}
+            {hasInfo && (
+              <div class="artist-detail-artwork-info">
+                {hasTitle && <h3 class="artist-detail-artwork-title">{artwork.title}</h3>}
+                {hasDescription && <p class="artist-detail-artwork-description">{artwork.description}</p>}
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  </main>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-image" alt="">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Serra 2.0 Project. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const lightbox = document.getElementById('lightbox') as HTMLElement;
+    const lightboxImg = document.getElementById('lightbox-image') as HTMLImageElement;
+    const lightboxCaption = document.getElementById('lightbox-caption') as HTMLElement;
+    const lightboxTriggers = document.querySelectorAll('.js-lightbox-trigger');
+
+    function openLightbox(imageSrc: string, caption: string) {
+      if (!lightbox || !lightboxImg || !lightboxCaption) return;
+      lightbox.style.display = 'flex';
+      lightboxImg.src = imageSrc;
+      lightboxCaption.textContent = caption;
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      if (!lightbox) return;
+      lightbox.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    lightboxTriggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const imageSrc = (trigger as HTMLElement).dataset.lightboxSrc;
+        const caption = (trigger as HTMLElement).dataset.lightboxCaption;
+        if (imageSrc) {
+          openLightbox(imageSrc, caption || '');
+        }
+      });
+    });
+    
+    if (lightbox) {
+      lightbox.addEventListener('click', () => {
+        closeLightbox();
+      });
+    }
+
+    if (lightboxImg) {
+      lightboxImg.addEventListener('click', (e: MouseEvent) => {
+        e.stopPropagation();
+      });
+    }
+
+    document.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    });
+  </script>
+</body>
+</html>
