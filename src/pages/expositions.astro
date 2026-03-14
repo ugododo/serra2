@@ -23,7 +23,7 @@ const expositions = [
     endDate: "2026-02-08",
     website: "https://pots.lydia.me/collect/phoenix-limited-championship-9923265/fr",
     status: "past",
-  },
+  },  
   {
     name: "Magic Mania Lille",
     address: "59000 Lille, France",
@@ -39,7 +39,7 @@ const expositions = [
     endDate: "2026",
     website: "https://www.play-in.com/en/magasin/1/paris-bnf",
     status: "ongoing",
-    photos: [""]
+    photos: ["play-in-panorama1.jpg", "play-in-closeup1.jpg", "play-in-panorama2.jpg", "play-in-closeup2.jpg"]
   }
 ];
 
@@ -91,19 +91,32 @@ const pastExpositions = expositions.filter(exp => exp.status === 'past');
               {expo.photos && expo.photos.length > 0 && (
                 <div class="expo-photos">
                   {expo.photos.length === 1 ? (
-                    <img 
-                      src={`${baseUrl}/expositions/${expo.photos[0]}`} 
-                      alt={`${expo.name} exhibition`}
-                      class="expo-photo-single"
-                    />
+                    <div 
+                      class="expo-photo-single js-lightbox-trigger"
+                      data-lightbox-src={`${baseUrl}/expositions/${expo.photos[0]}`}
+                      data-lightbox-caption={`${expo.name} - Exhibition Photo`}
+                    >
+                      <img 
+                        src={`${baseUrl}/expositions/${expo.photos[0]}`} 
+                        alt={`${expo.name} exhibition`}
+                      />
+                      <div class="zoom-overlay"></div>
+                    </div>
                   ) : (
-                    <div class="expo-photo-gallery">
+                    <div class={`expo-photo-gallery photos-${expo.photos.length}`}>
                       {expo.photos.map((photo, index) => (
-                        <img 
-                          src={`${baseUrl}/expositions/${photo}`} 
-                          alt={`${expo.name} exhibition photo ${index + 1}`}
-                          class="expo-photo-grid"
-                        />
+                        <div 
+                          class="expo-photo-wrapper js-lightbox-trigger"
+                          data-lightbox-src={`${baseUrl}/expositions/${photo}`}
+                          data-lightbox-caption={`${expo.name} - Photo ${index + 1}`}
+                        >
+                          <img 
+                            src={`${baseUrl}/expositions/${photo}`} 
+                            alt={`${expo.name} exhibition photo ${index + 1}`}
+                            class="expo-photo-grid"
+                          />
+                          <div class="zoom-overlay"></div>
+                        </div>
                       ))}
                     </div>
                   )}
@@ -149,19 +162,32 @@ const pastExpositions = expositions.filter(exp => exp.status === 'past');
               {expo.photos && expo.photos.length > 0 && (
                 <div class="expo-photos">
                   {expo.photos.length === 1 ? (
-                    <img 
-                      src={`${baseUrl}/expositions/${expo.photos[0]}`} 
-                      alt={`${expo.name} exhibition`}
-                      class="expo-photo-single"
-                    />
+                    <div 
+                      class="expo-photo-single js-lightbox-trigger"
+                      data-lightbox-src={`${baseUrl}/expositions/${expo.photos[0]}`}
+                      data-lightbox-caption={`${expo.name} - Exhibition Photo`}
+                    >
+                      <img 
+                        src={`${baseUrl}/expositions/${expo.photos[0]}`} 
+                        alt={`${expo.name} exhibition`}
+                      />
+                      <div class="zoom-overlay"></div>
+                    </div>
                   ) : (
-                    <div class="expo-photo-gallery">
+                    <div class={`expo-photo-gallery photos-${expo.photos.length}`}>
                       {expo.photos.map((photo, index) => (
-                        <img 
-                          src={`${baseUrl}/expositions/${photo}`} 
-                          alt={`${expo.name} exhibition photo ${index + 1}`}
-                          class="expo-photo-grid"
-                        />
+                        <div 
+                          class="expo-photo-wrapper js-lightbox-trigger"
+                          data-lightbox-src={`${baseUrl}/expositions/${photo}`}
+                          data-lightbox-caption={`${expo.name} - Photo ${index + 1}`}
+                        >
+                          <img 
+                            src={`${baseUrl}/expositions/${photo}`} 
+                            alt={`${expo.name} exhibition photo ${index + 1}`}
+                            class="expo-photo-grid"
+                          />
+                          <div class="zoom-overlay"></div>
+                        </div>
                       ))}
                     </div>
                   )}
@@ -207,19 +233,32 @@ const pastExpositions = expositions.filter(exp => exp.status === 'past');
               {expo.photos && expo.photos.length > 0 && (
                 <div class="expo-photos">
                   {expo.photos.length === 1 ? (
-                    <img 
-                      src={`${baseUrl}/expositions/${expo.photos[0]}`} 
-                      alt={`${expo.name} exhibition`}
-                      class="expo-photo-single"
-                    />
+                    <div 
+                      class="expo-photo-single js-lightbox-trigger"
+                      data-lightbox-src={`${baseUrl}/expositions/${expo.photos[0]}`}
+                      data-lightbox-caption={`${expo.name} - Exhibition Photo`}
+                    >
+                      <img 
+                        src={`${baseUrl}/expositions/${expo.photos[0]}`} 
+                        alt={`${expo.name} exhibition`}
+                      />
+                      <div class="zoom-overlay"></div>
+                    </div>
                   ) : (
-                    <div class="expo-photo-gallery">
+                    <div class={`expo-photo-gallery photos-${expo.photos.length}`}>
                       {expo.photos.map((photo, index) => (
-                        <img 
-                          src={`${baseUrl}/expositions/${photo}`} 
-                          alt={`${expo.name} exhibition photo ${index + 1}`}
-                          class="expo-photo-grid"
-                        />
+                        <div 
+                          class="expo-photo-wrapper js-lightbox-trigger"
+                          data-lightbox-src={`${baseUrl}/expositions/${photo}`}
+                          data-lightbox-caption={`${expo.name} - Photo ${index + 1}`}
+                        >
+                          <img 
+                            src={`${baseUrl}/expositions/${photo}`} 
+                            alt={`${expo.name} exhibition photo ${index + 1}`}
+                            class="expo-photo-grid"
+                          />
+                          <div class="zoom-overlay"></div>
+                        </div>
                       ))}
                     </div>
                   )}
@@ -261,8 +300,64 @@ const pastExpositions = expositions.filter(exp => exp.status === 'past');
 
   </main>
 
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-image" alt="">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
   <footer style="background: #2c3e50; color: white; text-align: center; padding: 2rem;">
     <p>&copy; 2026 Serra 2.0 Project. All rights reserved.</p>
   </footer>
+
+  <script>
+    const lightbox = document.getElementById('lightbox') as HTMLElement;
+    const lightboxImg = document.getElementById('lightbox-image') as HTMLImageElement;
+    const lightboxCaption = document.getElementById('lightbox-caption') as HTMLElement;
+    const lightboxTriggers = document.querySelectorAll('.js-lightbox-trigger');
+
+    function openLightbox(imageSrc: string, caption: string) {
+      if (!lightbox || !lightboxImg || !lightboxCaption) return;
+      lightbox.style.display = 'flex';
+      lightboxImg.src = imageSrc;
+      lightboxCaption.textContent = caption;
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      if (!lightbox) return;
+      lightbox.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    lightboxTriggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const imageSrc = (trigger as HTMLElement).dataset.lightboxSrc;
+        const caption = (trigger as HTMLElement).dataset.lightboxCaption;
+        if (imageSrc) {
+          openLightbox(imageSrc, caption || '');
+        }
+      });
+    });
+    
+    if (lightbox) {
+      lightbox.addEventListener('click', () => {
+        closeLightbox();
+      });
+    }
+
+    if (lightboxImg) {
+      lightboxImg.addEventListener('click', (e: MouseEvent) => {
+        e.stopPropagation();
+      });
+    }
+
+    document.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    });
+  </script>
 </body>
 </html>

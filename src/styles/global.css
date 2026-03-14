@@ -905,6 +905,7 @@
     opacity: 0.9;
   }
   
+/* Photo Gallery Styling */
   .expo-photos {
     width: 100%;
     margin-bottom: 1.5rem;
@@ -914,50 +915,93 @@
 
   .expo-photo-single {
     width: 100%;
-    height: 250px;
+    height: 180px;
     object-fit: cover;
     display: block;
     border-bottom: 3px solid rgba(201, 148, 30, 0.3);
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  .expo-photo-single img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .expo-photo-single:hover img {
+    transform: scale(1.05);
   }
 
   .expo-photo-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 0.5rem;
+  }
+
+  /* Photo wrapper for lightbox trigger */
+  .expo-photo-wrapper {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  /* 2 photos - side by side */
+  .expo-photo-gallery.photos-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* 3 photos - 2 on top, 1 centered below */
+  .expo-photo-gallery.photos-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .expo-photo-gallery.photos-3 .expo-photo-wrapper:last-child {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    margin: 0 auto;
+  }
+
+  /* 4 photos - 2x2 grid */
+  .expo-photo-gallery.photos-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* 5 photos - 3 on top, 2 below */
+  .expo-photo-gallery.photos-5 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .expo-photo-gallery.photos-5 .expo-photo-wrapper:nth-child(4),
+  .expo-photo-gallery.photos-5 .expo-photo-wrapper:nth-child(5) {
+    grid-column: span 1.5;
+  }
+
+  /* 6 photos - 3x2 grid */
+  .expo-photo-gallery.photos-6 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* 7+ photos - auto-fit grid */
+  .expo-photo-gallery:not([class*="photos-"]),
+  .expo-photo-gallery.photos-7,
+  .expo-photo-gallery.photos-8,
+  .expo-photo-gallery.photos-9 {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   }
 
   .expo-photo-grid {
     width: 100%;
-    height: 150px;
+    height: 100px;
     object-fit: cover;
     display: block;
     transition: transform 0.3s ease, filter 0.3s ease;
-    cursor: pointer;
   }
 
-  .expo-photo-grid:hover {
+  .expo-photo-wrapper:hover .expo-photo-grid {
     transform: scale(1.05);
     filter: brightness(1.1);
-  }
-
-  /* Adjust card to accommodate photos */
-  .expo-card {
-    overflow: hidden;
-  }
-
-  /* Mobile adjustments */
-  @media (max-width: 768px) {
-    .expo-photo-single {
-      height: 200px;
-    }
-
-    .expo-photo-grid {
-      height: 120px;
-    }
-
-    .expo-photo-gallery {
-      grid-template-columns: repeat(2, 1fr);
-    }
   }
 
   /* ==================== Partners Specific Styles ==================== */
