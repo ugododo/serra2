@@ -905,6 +905,61 @@
     opacity: 0.9;
   }
   
+  .expo-photos {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .expo-photo-single {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 3px solid rgba(201, 148, 30, 0.3);
+  }
+
+  .expo-photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .expo-photo-grid {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
+  }
+
+  .expo-photo-grid:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+  }
+
+  /* Adjust card to accommodate photos */
+  .expo-card {
+    overflow: hidden;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .expo-photo-single {
+      height: 200px;
+    }
+
+    .expo-photo-grid {
+      height: 120px;
+    }
+
+    .expo-photo-gallery {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
   /* ==================== Partners Specific Styles ==================== */
   .partner-section {
     margin-bottom: 4rem;

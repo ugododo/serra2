@@ -9,8 +9,12 @@ import Navigation from '../components/navbar.astro';
 const pageTitle = "Expositions - Serra 2.0";
 const pageDescription = "Upcoming and past exhibitions of the Serra 2.0 art project";
 
+// Base URL for GitHub Pages
+const baseUrl = '/serra2';
+
 // Simply add new objects to this array to add new expositions
 // status is upcoming, ongoing, or past
+// photos is optional - array of photo filenames stored in /public/expositions/
 const expositions = [
   {
     name: "Phoenix Limited Championship 6",
@@ -18,8 +22,7 @@ const expositions = [
     startDate: "2026-02-08",
     endDate: "2026-02-08",
     website: "https://pots.lydia.me/collect/phoenix-limited-championship-9923265/fr",
-    status: "past"
-  },  
+    status: "past",
   {
     name: "Magic Mania Lille",
     address: "59000 Lille, France",
@@ -34,7 +37,8 @@ const expositions = [
     startDate: "2026-03-06",
     endDate: "2026",
     website: "https://www.play-in.com/en/magasin/1/paris-bnf",
-    status: "ongoing"
+    status: "ongoing",
+    photos: [""]
   }
 ];
 
@@ -81,6 +85,30 @@ const pastExpositions = expositions.filter(exp => exp.status === 'past');
           {ongoingExpositions.map((expo) => (
             <article class="expo-card">
               <span class="status-badge ongoing">Ongoing</span>
+              
+              {/* Photo Gallery */}
+              {expo.photos && expo.photos.length > 0 && (
+                <div class="expo-photos">
+                  {expo.photos.length === 1 ? (
+                    <img 
+                      src={`${baseUrl}/expositions/${expo.photos[0]}`} 
+                      alt={`${expo.name} exhibition`}
+                      class="expo-photo-single"
+                    />
+                  ) : (
+                    <div class="expo-photo-gallery">
+                      {expo.photos.map((photo, index) => (
+                        <img 
+                          src={`${baseUrl}/expositions/${photo}`} 
+                          alt={`${expo.name} exhibition photo ${index + 1}`}
+                          class="expo-photo-grid"
+                        />
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+              
               <h3 class="expo-name">{expo.name}</h3>
               
               <div class="expo-detail">
@@ -115,6 +143,30 @@ const pastExpositions = expositions.filter(exp => exp.status === 'past');
           {upcomingExpositions.map((expo) => (
             <article class="expo-card">
               <span class="status-badge upcoming">Upcoming</span>
+              
+              {/* Photo Gallery */}
+              {expo.photos && expo.photos.length > 0 && (
+                <div class="expo-photos">
+                  {expo.photos.length === 1 ? (
+                    <img 
+                      src={`${baseUrl}/expositions/${expo.photos[0]}`} 
+                      alt={`${expo.name} exhibition`}
+                      class="expo-photo-single"
+                    />
+                  ) : (
+                    <div class="expo-photo-gallery">
+                      {expo.photos.map((photo, index) => (
+                        <img 
+                          src={`${baseUrl}/expositions/${photo}`} 
+                          alt={`${expo.name} exhibition photo ${index + 1}`}
+                          class="expo-photo-grid"
+                        />
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+              
               <h3 class="expo-name">{expo.name}</h3>
               
               <div class="expo-detail">
@@ -149,6 +201,30 @@ const pastExpositions = expositions.filter(exp => exp.status === 'past');
           {pastExpositions.map((expo) => (
             <article class="expo-card">
               <span class="status-badge past">Past</span>
+              
+              {/* Photo Gallery */}
+              {expo.photos && expo.photos.length > 0 && (
+                <div class="expo-photos">
+                  {expo.photos.length === 1 ? (
+                    <img 
+                      src={`${baseUrl}/expositions/${expo.photos[0]}`} 
+                      alt={`${expo.name} exhibition`}
+                      class="expo-photo-single"
+                    />
+                  ) : (
+                    <div class="expo-photo-gallery">
+                      {expo.photos.map((photo, index) => (
+                        <img 
+                          src={`${baseUrl}/expositions/${photo}`} 
+                          alt={`${expo.name} exhibition photo ${index + 1}`}
+                          class="expo-photo-grid"
+                        />
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+              
               <h3 class="expo-name">{expo.name}</h3>
               
               <div class="expo-detail">
@@ -189,3 +265,7 @@ const pastExpositions = expositions.filter(exp => exp.status === 'past');
   </footer>
 </body>
 </html>
+
+<style>
+  
+</style>
