@@ -507,6 +507,10 @@
     margin-bottom: 0;
   }
 
+  .article-section h3 {
+    text-align: center;
+  }
+
   /* Quote block styling */
   .quote-block {
     background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(201, 148, 30, 0.1) 100%);

@@ -1,0 +1,80 @@
+---
+import '../../styles/global.css';
+import Navigation from '../../components/navbar.astro';
+
+// Base URL for GitHub Pages
+const baseUrl = '/serra2';
+
+// Page metadata
+const pageTitle = "The Genie-Blessed Angel - Serra 2.0";
+const pageDescription = "Understanding the foundational principle behind Serra Angel and the Serra 2.0 project";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content={pageDescription}>
+  <title>{pageTitle}</title>
+</head>
+
+<body>
+  <Navigation currentPage="about" />
+
+  <header class="page-header">
+    <h1>The Genie-Blessed Angel</h1>
+  </header>
+
+  <main class="container">
+    <article class="about-article">
+      
+      <section class="article-section">
+        <p>
+          The curation of this exhibition sparked rich discussions within the community. Jense Gerrits, 
+          from the Netherlands, has kindly loaned us the singular international edition Serra Angel from 
+          his private collection, autographed by Douglas Shuler. On this specific piece, Shuler hand-drew 
+          the lamp of a "good genie", a fascinating creative nod, considering that the original artwork 
+          for the Aladdin's Lamp card (from the Arabian Nights expansion) was 
+          actually created by Mark Tedin.
+          By merging these two worlds, Shuler crafted a hybrid work in which 
+          the smoke rising from the lamp appears to give birth to the Angel. To 
+          highlight this one-of-a-kind specimen, I chose to frame it alongside a 
+          print by Alexandre Monteiro, better known as Hopare. A prominent 
+          figure in the Parisian urban art scene and represented by Galerie 
+          Bayard (Paris), Hopare's "half-angel, half-genie" portrait provides a 
+          powerful contemporary backdrop to Shuler's illustration. It invites us 
+          to wonder: could the Angel's legendary power be the ultimate wish 
+          that every player hoped a genie would grant ?
+        </p>
+      </section>
+
+      <div class="article-image2">
+        <img src=`${baseUrl}/articles/aladdin.jpg` alt="Serra Angel missprint from the Spanish version of Fourth Edition">
+      </div>
+
+      <section class="article-section">
+        <h3>A Bit of History… Aladdin's Lamp</h3> 
+        <p>
+          Upon the release of the Arabian Nights
+          expansion in December 1993, Aladdin's 
+          Lamp became the card with the highest 
+          mana value in the game. It dethroned 
+          heavyweights like Force of Nature and Lord 
+          of the Pit, which cost "only" 6 or 7 mana at 
+          the time. The Lamp held this record until 
+          the arrival of Polar Kraken in the Ice Age set in June 1995. 
+          In the original Arabian Nights printing, the mana cost is displayed as two gray circles, 
+          each containing the number 5. This was because "mana bubbles" for double-digit 
+          numbers didn't exist yet in the game's graphic design. Old school Magic was truly wild! 
+        </p>
+      </section>
+
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Serra 2.0 Project. All rights reserved.</p>
+  </footer>
+</body>
+</html>
