@@ -991,8 +991,8 @@
   .expo-photo-gallery:not([class*="photos-"]),
   .expo-photo-gallery.photos-7,
   .expo-photo-gallery.photos-8,
-  .expo-photo-gallery.photos-9 {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  .expo-photo-gallery.photos-13 {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .expo-photo-grid {
